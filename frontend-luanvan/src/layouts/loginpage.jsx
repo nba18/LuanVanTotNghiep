@@ -12,7 +12,10 @@ function Loginpage() {
             <form class="text-center pt-10" onSubmit={handleSubmit(onSubmit)}>
                 <img class="mx-auto" src={LogoCTU} alt="" width="160px" />
                 <div class="pt-10 text-4xl">
-                    HỆ THỐNG HỖ TRỢ ĐĂNG KÝ LUẬN VĂN
+                    HỆ THỐNG HỖ TRỢ TRIỂN KHAI THỰC HIỆN LUẬN VĂN
+                </div>
+                <div class="pt-3 text-4xl">
+                    NGHÀNH KHOA HỌC MÁY TÍNH
                 </div>
                 <div class="pt-10">
                     <TextField {...register('taikhoan')}
@@ -30,8 +33,10 @@ function Loginpage() {
                         style={{ width: "300px" }}
                     />
                 </div>
-                <div class="pt-10"><Button type='submit' variant="contained" >Đăng nhập</Button></div>
+                <div class="pt-7"><Button type='submit' variant="contained" >Đăng nhập</Button></div>
             </form>
+            <div class="w-full bg-[#1565C0] h-20 mt-24">
+            </div>
         </div>
     )
 }
