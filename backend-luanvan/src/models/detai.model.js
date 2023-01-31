@@ -6,7 +6,7 @@ const detai = mongoose.Schema(
             type: String,
             required: true,
         },
-        giangvien: {
+        idgiangvien: {
             type: String,
             require: true,
         },
@@ -14,8 +14,25 @@ const detai = mongoose.Schema(
             type: String,
             require: true,
         },
-        mota: {
+        mota1: {
             type: String,
+            //Kiến thức yêu cầu.
+        },
+        mota2: {
+            type: String,
+            //Giới thiệu.
+        },
+        mota3: {
+            type: String,
+            //Mục tiêu và yêu cầu chức năng.
+        },
+        mota4: {
+            type: String,
+            //Tài liệu tham khảo.
+        },
+        motakhac:{
+            type: String,
+            //Mô tả khác.
         },
         trangthai: {
             type: Number,

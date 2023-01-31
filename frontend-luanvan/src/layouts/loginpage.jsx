@@ -8,16 +8,16 @@ function Loginpage() {
         console.log(data)
     }
     return (
-        <div class="w-full h-screen bg-[#F0F2F5]">
-            <form class="text-center pt-10" onSubmit={handleSubmit(onSubmit)}>
-                <img class="mx-auto" src={LogoCTU} alt="" width="160px" />
-                <div class="pt-10 text-4xl">
+        <div className="w-full h-screen bg-[#F0F2F5]">
+            <form className="text-center pt-10" onSubmit={handleSubmit(onSubmit)}>
+                <img className="mx-auto" src={LogoCTU} alt="" width="160px" />
+                <div className="pt-10 text-4xl">
                     HỆ THỐNG HỖ TRỢ TRIỂN KHAI THỰC HIỆN LUẬN VĂN
                 </div>
-                <div class="pt-3 text-4xl">
+                <div className="pt-3 text-4xl">
                     NGHÀNH KHOA HỌC MÁY TÍNH
                 </div>
-                <div class="pt-10">
+                <div className="pt-10">
                     <TextField {...register('taikhoan')}
                         name="taikhoan"
                         label="Tài khoản"
@@ -25,7 +25,7 @@ function Loginpage() {
                         style={{ width: "300px" }}
                     />
                 </div>
-                <div class="pt-5">
+                <div className="pt-5">
                     <TextField {...register('matkhau')}
                         name="matkhau"
                         label="Mật khẩu"
@@ -33,9 +33,9 @@ function Loginpage() {
                         style={{ width: "300px" }}
                     />
                 </div>
-                <div class="pt-7"><Button type='submit' variant="contained" >Đăng nhập</Button></div>
+                <div className="pt-7"><Button type='submit' variant="contained" >Đăng nhập</Button></div>
             </form>
-            <div class="w-full bg-[#1565C0] h-20 mt-24">
+            <div className="w-full bg-[#1565C0] h-20 mt-24">
             </div>
         </div>
     )

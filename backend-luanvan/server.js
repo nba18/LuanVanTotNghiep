@@ -14,10 +14,10 @@ route(app)
 const PORT = config.app.port;
 const url = config.DB.url;
 mongoose.connect(url).then((res) => {
-    console.log(`ok`)
+    console.log(`Ket noi thanh cong`)
 }).catch((error) => {
     console.log(`Loi`,error)
 })
 app.listen(PORT, () => {
-    console.log(`Sever is `)
+    console.log(`Sever is on port ${PORT}`)
 })

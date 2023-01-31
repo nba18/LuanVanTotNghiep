@@ -16,12 +16,13 @@ const hocky = mongoose.Schema(
         },
         detaiList: [{
             type: String,
+            //Danh sách đề tài.
         }],
         trangthai: {
             type: Boolean,
-            default: false,
-            //Trạng thái false: Học kỳ có thể chỉnh sữa.
-            //Trạng thái true: Học kỳ đã khóa không thể chỉnh sữa.
+            default: true,
+            //Trạng thái true: Học kỳ có thể chỉnh sữa.
+            //Trạng thái false: Học kỳ đã khóa không thể chỉnh sữa.
         }
     },
     { timestamps: true }
