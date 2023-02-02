@@ -6,13 +6,13 @@ const detai = mongoose.Schema(
             type: String,
             required: true,
         },
-        idgiangvien: {
-            type: String,
-            require: true,
+        giangvien: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Giangvien'
         },
         hocky: {
-            type: String,
-            require: true,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Hocky'
         },
         mota_kienthuc: {
             type: String,

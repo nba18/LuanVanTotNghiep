@@ -1,24 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TextField, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
-import Select from '@mui/material/Select';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
+import { detaiAPI, hockyAPI } from "../../api";
 
 function Themdetai() {
-    const [hocky, setHocky] = React.useState('');
 
-    const handleChange = event => {
-        setHocky(event.target.value)
-    };
+
+
 
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
-        data.hocky = hocky;
-        console.log(data)
+        const tempt = await detaiAPI.themdetai(data);
+        console.log(tempt);
     }
+
+    const [hockyList, sethockyList] = useState([]);
+
+    const fetchHocky = async () => {
+        const List = await hockyAPI.layhocky;
+        sethockyList(List.data);
+    };
+    useEffect(() => {
+        
+        fetchHocky();
+    }, []);
+
     return (
         <div className="">
             <div className="">
@@ -34,26 +40,18 @@ function Themdetai() {
                                     style={{ width: "700px" }}
                                 />
                             </div>
-                            <div className="">
-                                <Box sx={{ minWidth: 120 }} className="w-[700px] m-auto mt-2">
-                                    <FormControl fullWidth>
-                                        <InputLabel id="demo-simple-select-label">Học kỳ</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            value={hocky}
-                                            label="Học kỳ"
-                                            onChange={handleChange}
-                                        >
-                                            <MenuItem value={'1'}>Học kỳ 1</MenuItem>
-                                            <MenuItem value={'2'}>Học kỳ 2</MenuItem>
-                                            <MenuItem value={'hè'}>Học kỳ hè</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </Box>
+                            <div className="w-[700px] m-auto mt-2">
+                                <label  className=''>Nien khoa:</label>
+                                <select  id="hocky" type='select'   {...register('hocky',{ required: true })}>
+                                    {hockyList.map(hocky=>{
+                                            return(
+                                                <option key={hocky._id} value={hocky._id}>{hocky.nambatdau} - {hocky.namketthuc} Học kỳ: {hocky.hocky}</option>
+                                            );
+                                    })}
+                                </select>   
                             </div>
                             <div className="pt-2">
-                                <TextField {...register('mota1')}
+                                <TextField {...register('mota_kienthuc')}
                                     name="mota1"
                                     label="Yêu cầu kiến thức"
                                     type="text"
@@ -63,7 +61,7 @@ function Themdetai() {
                                 />
                             </div>
                             <div className="pt-2">
-                                <TextField {...register('mota2')}
+                                <TextField {...register('mota_gioithieu')}
                                     name="mota2"
                                     label="Giới thiệu"
                                     type="text"
@@ -73,7 +71,7 @@ function Themdetai() {
                                 />
                             </div>
                             <div className="pt-2">
-                                <TextField {...register('mota3')}
+                                <TextField {...register('mota_yeucau')}
                                     name="mota3"
                                     label="Mục tiêu và yêu cầu chức năng"
                                     type="text"
@@ -83,7 +81,7 @@ function Themdetai() {
                                 />
                             </div>
                             <div className="pt-2">
-                                <TextField {...register('mota4')}
+                                <TextField {...register('mota_tailieu')}
                                     name="mota4"
                                     label="Tài liệu tham khảo"
                                     type="text"
@@ -93,7 +91,7 @@ function Themdetai() {
                                 />
                             </div>
                             <div className="pt-2">
-                                <TextField {...register('motakhac')}
+                                <TextField {...register('mota_khac')}
                                     name="motakhac"
                                     label="Yêu cầu khác"
                                     type="text"

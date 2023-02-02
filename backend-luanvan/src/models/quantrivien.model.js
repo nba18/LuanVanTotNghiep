@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const user = mongoose.Schema(
+const quantrivien = mongoose.Schema(
     {
         taikhoan: {
             type: String,
@@ -11,15 +11,6 @@ const user = mongoose.Schema(
             type: String,
             required: true,
         }, 
-        msnd: {
-            type: String,
-        },
-        hoten: {
-            type: String,
-        },
-        email: {
-            type: String,
-        },
         phanloai: {
             type: Number,
             default: '1',
@@ -32,4 +23,4 @@ const user = mongoose.Schema(
     },
     {timestamps: true}
 );
-module.exports = mongoose.model("User",user);
+module.exports = mongoose.model("Quantrivien",quantrivien);

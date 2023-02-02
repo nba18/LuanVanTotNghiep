@@ -15,7 +15,24 @@ export const hockyAPI ={
     themhocky : (data)=>{
         return callApi('post',`/quantrivien/themhocky`,data);
     },
-    layhocky :  callApi('get','/quantrivien/layhocky',null)
+    layhocky :  callApi('get','/quantrivien/layhocky',null),
+
+    khoahocky : (data)=>{
+        return callApi('put',`/quantrivien/khoahocky`,data);
+    },
+
+    mokhoahocky : (data)=>{
+        return callApi('put',`/quantrivien/mokhoahocky`,data);
+    },
+
+
+}
+
+export const detaiAPI ={
+    themdetai : (data)=>{
+        return callApi('post',`/giangvien/themdetai`,data);
+    },
+    
 
 
 }

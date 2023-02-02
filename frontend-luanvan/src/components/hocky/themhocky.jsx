@@ -18,8 +18,9 @@ function Hocky() {
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
         data.hocky = hocky;
-        console.log(data)
-        const temp = await hockyAPI.themhocky(data)
+        // console.log(data)
+        const temp = await hockyAPI.themhocky(data);
+        console.log(temp);
     }
     return (
         <div className="">

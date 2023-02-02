@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const Detai = require("../models/detai.model");
+const Hocky = require("../models/hocky.model");
 const detaiController = {
     themDetai: async (req, res) => {
+    try{
         const newDetai = new Detai({
             tendetai: req.body.tendetai,
             idgiangvien : req.body.idgiangvien,
@@ -11,12 +13,18 @@ const detaiController = {
             mota_yeucau: req.body.mota_yeucau,
             mota_tailieu: req.body.mota_tailieu,
             mota_khac: req.body.mota_khac,
-        })
+        });
         const detai = await newDetai.save();
-        if (!detai) {
-            return res.status(500).json("Thêm thất bại")
+        await Hocky.findByIdAndUpdate(
+            {_id : req.body.hocky },
+            {$push:{
+                danhsachdetai : detai._id
+            }});
+        res.status(200).json(detai);
         }
-        return res.status(200).json(detai)
+        catch(err){
+            res.status(500).json(err);
+        }
     },
 }
 

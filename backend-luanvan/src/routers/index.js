@@ -1,11 +1,11 @@
-const userRouter = require("./user.router")
-const adminRouter = require("./admin.router")
+// const userRouter = require("./user.router")
+const giangvienRouter = require("./giangvien.router")
 const quantrivienRouter = require("./quantrivien.router")
 const express = require("express");
 
 function router(app){
-    // app.use("/admin",adminRouter)
-    app.use("/",userRouter)
+    app.use("/giangvien",giangvienRouter)
+    // app.use("/",userRouter)
     app.use("/quantrivien",quantrivienRouter)
     
 }

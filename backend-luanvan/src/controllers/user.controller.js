@@ -4,7 +4,7 @@ const SHA256 = require("sha256");
 
 // const Document = require("../models/document.model");
 // const Category = require("../models/category.model")
-const User = require("../models/user.model");
+const User = require("../models/quantrivien.model");
 
 const userController = {
     //Tạo tài khoản

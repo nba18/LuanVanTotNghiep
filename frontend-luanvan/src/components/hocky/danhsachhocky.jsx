@@ -3,15 +3,17 @@ import { hockyAPI } from '../../api';
 
 import DShockycard from "./hockycard";
 function DShocky() {
-    const [hockyLish, sethockyList] = useState([]);
+    const [hockyList, sethockyList] = useState([]);
+
+    const fetchHocky = async () => {
+        const List = await hockyAPI.layhocky;
+        sethockyList(List.data);
+    };
     useEffect(() => {
-        const fetchCategory = async () => {
-            const List = await hockyAPI.layhocky;
-            sethockyList(List.data)
-        };
-        fetchCategory();
-    }, [hockyLish]);
-    console.log(hockyLish)
+        
+        fetchHocky();
+    }, []);
+
     return (
         <div className="">
             <div className="">
@@ -25,10 +27,10 @@ function DShocky() {
                         <div className="pt-10 pl-5">Khóa học kỳ</div>
                     </div>
                     <div className="">
-                    {hockyLish.map((hocky, index) => {
+                    {hockyList.map((hocky, index) => {
                         return (
                             <div key={hocky._id} className='' >
-                                <DShockycard stt={index + 1} nambatdau = {hocky.nambatdau} namketthuc={hocky.namketthuc} hocky={hocky.hocky} trangthai = {hocky.trangthai}/>
+                                <DShockycard stt={index + 1} nambatdau = {hocky.nambatdau} namketthuc={hocky.namketthuc} hocky={hocky.hocky} trangthai = {hocky.trangthai} id ={hocky._id} reload={fetchHocky}/>
                             </div>
                         );
                     })}

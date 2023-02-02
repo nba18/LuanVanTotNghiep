@@ -21,6 +21,25 @@ const hockyController = {
             return res.status(403).json("Rỗng")
         }
         return res.status(200).json(hocky)
+    }, 
+    khoaHocky: async(req, res)=>{
+        const hocky= await Hocky.findByIdAndUpdate(req.body.id,{
+            trangthai: false
+        })
+        if (!hocky) {
+            return res.status(403).json("Rỗng")
+        }
+        return res.status(200).json(hocky)
+    },
+
+    mokhoaHocky: async(req, res)=>{
+        const hocky= await Hocky.findByIdAndUpdate(req.body.id,{
+            trangthai: true
+        })
+        if (!hocky) {
+            return res.status(403).json("Rỗng")
+        }
+        return res.status(200).json(hocky)
     }
 }
 
