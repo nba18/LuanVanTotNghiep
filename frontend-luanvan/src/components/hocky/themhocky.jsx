@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import {hockyAPI} from '../../api/index';
 
 function Hocky() {
     const [hocky, setHocky] = React.useState('');
@@ -18,6 +19,7 @@ function Hocky() {
     const onSubmit = async (data) => {
         data.hocky = hocky;
         console.log(data)
+        const temp = await hockyAPI.themhocky(data)
     }
     return (
         <div className="">

@@ -14,23 +14,23 @@ const detai = mongoose.Schema(
             type: String,
             require: true,
         },
-        mota1: {
+        mota_kienthuc: {
             type: String,
             //Kiến thức yêu cầu.
         },
-        mota2: {
+        mota_gioithieu: {
             type: String,
             //Giới thiệu.
         },
-        mota3: {
+        mota_yeucau: {
             type: String,
             //Mục tiêu và yêu cầu chức năng.
         },
-        mota4: {
+        mota_tailieu: {
             type: String,
             //Tài liệu tham khảo.
         },
-        motakhac:{
+        mota_khac:{
             type: String,
             //Mô tả khác.
         },

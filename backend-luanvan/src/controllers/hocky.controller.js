@@ -15,6 +15,13 @@ const hockyController = {
         }
         return res.status(200).json(hocky)
     },
+    layHocky: async (req, res) => {
+        const hocky = await Hocky.find()
+        if (!hocky) {
+            return res.status(403).json("Rỗng")
+        }
+        return res.status(200).json(hocky)
+    }
 }
 
 module.exports = hockyController;

@@ -23,6 +23,10 @@ const user = mongoose.Schema(
         phanloai: {
             type: Number,
             default: '1',
+            //1: 
+            //2:
+            //3:
+            //4:
         }
         
     },

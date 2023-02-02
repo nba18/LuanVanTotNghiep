@@ -6,11 +6,11 @@ const detaiController = {
             tendetai: req.body.tendetai,
             idgiangvien : req.body.idgiangvien,
             hocky: req.body.hocky,
-            mota1: req.body.mota1,
-            mota2: req.body.mota2,
-            mota3: req.body.mota3,
-            mota4: req.body.mota4,
-            motakhac: req.body.motakhac,
+            mota_kienthuc: req.body.mota_kienthuc,
+            mota_gioithieu: req.body.mota_gioithieu,
+            mota_yeucau: req.body.mota_yeucau,
+            mota_tailieu: req.body.mota_tailieu,
+            mota_khac: req.body.mota_khac,
         })
         const detai = await newDetai.save();
         if (!detai) {

@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import { hockyAPI } from '../../api';
 
 import DShockycard from "./hockycard";
 function DShocky() {
+    const [hockyLish, sethockyList] = useState([]);
+    useEffect(() => {
+        const fetchCategory = async () => {
+            const List = await hockyAPI.layhocky;
+            sethockyList(List.data)
+        };
+        fetchCategory();
+    }, [hockyLish]);
+    console.log(hockyLish)
     return (
         <div className="">
             <div className="">
@@ -14,7 +24,15 @@ function DShocky() {
                         <div className="pt-10 pl-5">Trạng thái</div>
                         <div className="pt-10 pl-5">Khóa học kỳ</div>
                     </div>
-                    <DShockycard />
+                    <div className="">
+                    {hockyLish.map((hocky, index) => {
+                        return (
+                            <div key={hocky._id} className='' >
+                                <DShockycard stt={index + 1} nambatdau = {hocky.nambatdau} namketthuc={hocky.namketthuc} hocky={hocky.hocky} trangthai = {hocky.trangthai}/>
+                            </div>
+                        );
+                    })}
+                </div>
                     <div className="w-[75rem] m-auto rounded-br-lg rounded-bl-lg h-10 bg-white shadow-lg"></div>
                 </div>
             </div>
