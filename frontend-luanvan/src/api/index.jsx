@@ -15,7 +15,7 @@ export const hockyAPI ={
     themhocky : (data)=>{
         return callApi('post',`/quantrivien/themhocky`,data);
     },
-    layhocky :  callApi('get','/quantrivien/layhocky',null),
+    layhocky :() =>{ return callApi('get','/quantrivien/layhocky',null)},
 
     khoahocky : (data)=>{
         return callApi('put',`/quantrivien/khoahocky`,data);
