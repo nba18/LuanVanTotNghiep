@@ -2,32 +2,53 @@ const req = require("express/lib/request");
 const mongoose = require("mongoose");
 const SHA256 = require("sha256");
 
+const mailer = require("../config/mailer");
+var generator = require('generate-password');
+
+
+
 // const Document = require("../models/document.model");
 // const Category = require("../models/category.model")
 const User = require("../models/quantrivien.model");
-
-const userController = {
+const Account = require("../models/account.model");
+const Sinhvien = require("../models/sinhvien.model");
+const Giangvien = require("../models/giangvien.model");
+const accountController = {
     //Tạo tài khoản
     register: async (req, res) => {
-        const hashed = await SHA256(req.body.matkhau)
-        const uniqueUser = await User.findOne({ taikhoan: req.body.taikhoan })
+        const uniqueUser = await Account.findOne({ taikhoan: req.body.taikhoan })
         if (uniqueUser) {
             return res.status(300).json("User Name tồn tại !")
         }
         else {
-            const newUser = User({
+            var password = generator.generate({
+                length: 5,
+                numbers: true
+            });
+            await mailer.sendMail(req.body.taikhoan,'Mật khẩu đăng nhập vào hệ thống A',password)
+            const hashed = await SHA256(password)
+            const newAccount = Account({
                 taikhoan: req.body.taikhoan,
                 matkhau: hashed,
-                msnd: req.body.msnd,
-                hoten: req.body.hoten,
-                email: req.body.email,
-                phanloai: req.body.phanloai
             })
-            const user = await newUser.save()
-            if (!user) {
+            const account = await newAccount.save()
+            if(req.body.taikhoan.includes("student")){
+                const newSinhvien = Sinhvien({
+                    hoten: req.body.taikhoan,
+                    email: req.body.taikhoan,
+                })
+                await newSinhvien.save()
+            }else{
+                const newGiangvien = Giangvien({
+                    hoten: req.body.taikhoan,
+                    email: req.body.taikhoan,
+                })
+                await newGiangvien.save()
+            }
+            if (!account) {
                 return res.status(404).json("Đăng kí không thành công !")
             }
-            return res.status(200).json(user)
+            return res.status(200).json(account)
         }
     },
     //Đăng nhập
@@ -67,4 +88,4 @@ const userController = {
             },
 }
 
-module.exports = userController
+module.exports = accountController

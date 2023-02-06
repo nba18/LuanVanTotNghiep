@@ -27,10 +27,10 @@ function DShocky() {
                         <div className="pt-10 pl-5">Khóa học kỳ</div>
                     </div>
                     <div className="">
-                    {hockyList.map((hocky, index) => {
+                    {hockyList?.map((hocky, index) => {
                         return (
                             <div key={hocky._id} className='' >
-                                <DShockycard stt={index + 1} nambatdau = {hocky.nambatdau} namketthuc={hocky.namketthuc} hocky={hocky.hocky} trangthai = {hocky.trangthai} id ={hocky._id} reload={fetchHocky}/>
+                                <DShockycard stt={index + 1} nambatdau = {hocky?.nambatdau} namketthuc={hocky?.namketthuc} hocky={hocky?.hocky} trangthai = {hocky?.trangthai} id ={hocky?._id} reload={fetchHocky}/>
                             </div>
                         );
                     })}

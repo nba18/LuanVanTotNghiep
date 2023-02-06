@@ -12,9 +12,11 @@ export function callApi(method, endpoint, data) {
 }
 
 export const hockyAPI ={
+    
     themhocky : (data)=>{
         return callApi('post',`/quantrivien/themhocky`,data);
     },
+
     layhocky :() =>{ return callApi('get','/quantrivien/layhocky',null)},
 
     khoahocky : (data)=>{

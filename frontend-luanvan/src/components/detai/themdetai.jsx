@@ -5,9 +5,6 @@ import { detaiAPI, hockyAPI } from "../../api";
 
 function Themdetai() {
 
-
-
-
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
         const tempt = await detaiAPI.themdetai(data);
@@ -41,11 +38,11 @@ function Themdetai() {
                                 />
                             </div>
                             <div className="w-[700px] m-auto mt-2">
-                                <label  className=''>Nien khoa:</label>
+                                <label  className=''>Niên khóa:</label>
                                 <select  id="hocky" type='select'   {...register('hocky',{ required: true })}>
-                                    {hockyList.map(hocky=>{
+                                    {hockyList?.map(hocky=>{
                                             return(
-                                                <option key={hocky._id} value={hocky._id}>{hocky.nambatdau} - {hocky.namketthuc} Học kỳ: {hocky.hocky}</option>
+                                                <option key={hocky?._id} value={hocky?._id}>{hocky?.nambatdau} - {hocky?.namketthuc} Học kỳ: {hocky?.hocky}</option>
                                             );
                                     })}
                                 </select>   
