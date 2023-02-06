@@ -1,11 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import Detaicard from './detaicard';
+// import PropTypes from 'prop-types';
 
 Danhsachdetai.propTypes = {
     
 };
 
 function Danhsachdetai(props) {
+
+    // const [list, setList] = useState([]);
+    const Listtest = [
+        {
+            Name: "De tai a",
+            NameE: "",
+            NienKhoa: "2021-2022",
+            HocKy: "1",
+            SinhVien: "Nguyen Van a",
+            TrangThai: "Duoc tiep nhan",
+            MoTa: "De tai nay hay ne",
+
+        },
+        {
+            Name: "De tai bbbbbbbbbb",
+            NameE: "",
+            NienKhoa: "2021-2022",
+            HocKy: "2",
+            SinhVien: "",
+            TrangThai: "Da duyet",
+            MoTa: "De tai nay hay ne",
+
+        },
+    ]
+
+    
+    // setList(Listtest);
+
     return (
         <div className="">
             <div className="">
@@ -19,13 +48,13 @@ function Danhsachdetai(props) {
                         <div className="pt-10 pl-5">Trạng thái</div>
                     </div>
                     <div className="">
-                    {/* {hockyList.map((hocky, index) => {
+                    {Listtest.map((hocky, index) => {
                         return (
                             <div key={hocky._id} className='' >
-                                <DShockycard stt={index + 1} nambatdau = {hocky.nambatdau} namketthuc={hocky.namketthuc} hocky={hocky.hocky} trangthai = {hocky.trangthai} id ={hocky._id} reload={fetchHocky}/>
+                                <Detaicard stt={index + 1} ten={hocky.Name} hocky={hocky.HocKy} trangthai = {hocky.TrangThai} nienkhoa={hocky.NienKhoa}/>
                             </div>
                         );
-                    })} */}
+                    })}
                 </div>
                     <div className="w-[75rem] m-auto rounded-br-lg rounded-bl-lg h-10 bg-white shadow-lg"></div>
                 </div>
