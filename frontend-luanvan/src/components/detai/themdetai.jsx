@@ -17,7 +17,7 @@ function Themdetai() {
     const [hockyList, sethockyList] = useState([]);
 
     const fetchHocky = async () => {
-        const List = await hockyAPI.layhocky;
+        const List = await hockyAPI.layhocky();
         sethockyList(List.data);
     };
     useEffect(() => {
