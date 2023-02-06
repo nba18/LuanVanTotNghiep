@@ -26,11 +26,11 @@ function DShockycard(props) {
                         <div className="pt-5 pl-5">{hocky}</div>
                         {trangthai && <><div className="pt-5 px-5">Chưa khóa</div>
                             <div className="my-5 mx-4">
-                                <Button onClick={khoa} type='submit' variant="contained" className="w-[100px]" >Khóa</Button>
+                                <Button onClick={khoa} type='submit' variant="contained" className="w-[110px]" >Khóa</Button>
                             </div></>}
                         {!trangthai && <><div className="pt-5 px-5">Đã khóa</div>
                             <div className="my-5 mx-4">
-                                <Button onClick={mokhoa} type='submit' variant="contained" className="w-[100px]">Mở Khóa</Button>
+                                <Button onClick={mokhoa} type='submit' variant="contained" className="w-[110px]">Mở Khóa</Button>
                             </div></>}
                         
                         <div className="pt-5 pl-5"></div>

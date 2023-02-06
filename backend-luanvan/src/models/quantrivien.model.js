@@ -2,14 +2,8 @@ const mongoose = require("mongoose");
 
 const quantrivien = mongoose.Schema(
     {
-        taikhoan: {
+        msnd: {
             type: String,
-            required: true,
-            unique: true,
-        },
-        matkhau: {
-            type: String,
-            required: true,
         }, 
         phanloai: {
             type: Number,

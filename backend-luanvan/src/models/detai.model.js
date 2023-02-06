@@ -6,6 +6,9 @@ const detai = mongoose.Schema(
             type: String,
             required: true,
         },
+        tentienganh: {
+            type: String,
+        },
         giangvien: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Giangvien'

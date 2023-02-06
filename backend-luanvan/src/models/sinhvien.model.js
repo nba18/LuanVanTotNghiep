@@ -1,16 +1,7 @@
 const mongoose = require("mongoose");
 
 const sinhvien = mongoose.Schema(
-    {
-        taikhoan: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        matkhau: {
-            type: String,
-            required: true,
-        }, 
+    { 
         msnd: {
             type: String,
         },
