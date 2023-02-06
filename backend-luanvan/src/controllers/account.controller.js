@@ -21,38 +21,27 @@ const accountController = {
             return res.status(300).json("User Name tồn tại !")
         }
         else {
-            var password = generator.generate({
-                length: 5,
-                numbers: true
-            });
-            var data = {
-                service_id: 'YOUR_SERVICE_ID',
-                template_id: 'YOUR_TEMPLATE_ID',
-                user_id: 'YOUR_PUBLIC_KEY',
-                template_params: {
-                    'username': 'James',
-                    'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...'
-                }
-            };
-            const hashed = await SHA256(password)
+            const hashed = await SHA256(req.body.matkhau)
             const newAccount = Account({
                 taikhoan: req.body.taikhoan,
                 matkhau: hashed,
             })
             const account = await newAccount.save()
-            if(req.body.taikhoan.includes("student")){
+            if (req.body.taikhoan.includes("student")) {
                 const newSinhvien = Sinhvien({
                     hoten: req.body.taikhoan,
                     email: req.body.taikhoan,
                 })
-                await newSinhvien.save()
-            }else{
+                console.log("sinhvien",req.body.taikhoan)
+                const account2 = await newSinhvien.save()
+            } else {
                 const newGiangvien = Giangvien({
                     hoten: req.body.taikhoan,
                     email: req.body.taikhoan,
                 })
-                await newGiangvien.save()
-            }
+                console.log(req.body.taikhoan)
+                const account1 = await newGiangvien.save()
+            } 
             if (!account) {
                 return res.status(404).json("Đăng kí không thành công !")
             }
@@ -83,17 +72,17 @@ const accountController = {
     //     }
     //     return res.status(200).json(product)
     // },
-        //Tìm một sản phẩm theo tên
-        viewDetail: async (req, res) => {
-            const product = await Product.findOne({ id: req.params })
-            if (!product) {
-                return res.status(404).json("Không tìm thấy sản phẩm")
-            }
-            return res.status(200).json(product)
-        },
-            cart: async (req, res) => {
-                res.send('cart')
-            },
+    //Tìm một sản phẩm theo tên
+    viewDetail: async (req, res) => {
+        const product = await Product.findOne({ id: req.params })
+        if (!product) {
+            return res.status(404).json("Không tìm thấy sản phẩm")
+        }
+        return res.status(200).json(product)
+    },
+    cart: async (req, res) => {
+        res.send('cart')
+    },
 }
 
 module.exports = accountController
