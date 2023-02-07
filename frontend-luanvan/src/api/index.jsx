@@ -38,5 +38,8 @@ export const detaiAPI = {
 export const nguoidungAPI = {
     dangky: (data) => {
         return callApi('post', `/dangky`, data);
+    },
+    dangnhap: (data) => {
+        return callApi('post', `/dangnhap`, data);
     }
 }

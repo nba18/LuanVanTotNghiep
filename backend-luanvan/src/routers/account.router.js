@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const accountController = require('../controllers/account.controller');
+const { route } = require('./giangvien.router');
 
 
-// router.post('/login', userController.login)
+router.post('/dangnhap', accountController.login)
 router.post('/dangky', accountController.register);
 
 

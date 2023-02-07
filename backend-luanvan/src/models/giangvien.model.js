@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const giangvien = mongoose.Schema(
     {
-        msnd: {
+        msgv: {
             type: String,
         },
         hoten: {
@@ -22,11 +22,11 @@ const giangvien = mongoose.Schema(
         phanloai: {
             type: Number,
             default: '3',
-            //1: 
-            //2:
-            //3:
-            //4:
-        }
+            //1: quản trị viên
+            //2: trưởng khoa
+            //3: giảng viên
+            //4: sinh viên
+        },
         
     },
     {timestamps: true}

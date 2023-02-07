@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
-const quantrivien = mongoose.Schema(
+const truongkhoa = mongoose.Schema(
     {
         msnd: {
             type: String,
         }, 
         phanloai: {
             type: Number,
-            default: '1',
+            default: '2',
             //1: quản trị viên
             //2: trưởng khoa
             //3: giảng viên
@@ -17,4 +17,4 @@ const quantrivien = mongoose.Schema(
     },
     {timestamps: true}
 );
-module.exports = mongoose.model("Quantrivien",quantrivien);
+module.exports = mongoose.model("Truongkhoa",truongkhoa);
