@@ -9,17 +9,20 @@ function Loginpage() {
     const navigate = useNavigate();
     const onSubmit = async (data) => {
         const temp = await nguoidungAPI.dangnhap(data)
+        // console.log(temp.data)
         localStorage.setItem("phanquyen", temp.data.phanloai)
         localStorage.setItem("hoten", temp.data.hoten)
         localStorage.setItem("email", temp.data.email)
+        localStorage.setItem("id", temp.data._id)
         if (temp.data.phanloai = 4) {
             localStorage.setItem("mssv", temp.data.mssv)
-            navigate("/hocky")
+            navigate('/hocky')
         }
         if (temp.data.phanloai = 3) {
             localStorage.setItem("msgv", temp.data.msgv)
-            navigate("/dsdetai")
+            navigate('/detai')
         }
+
     }
     return (
         <div className="w-full h-screen bg-[#F0F2F5]">
