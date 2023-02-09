@@ -36,37 +36,36 @@ function Chitietdetaipage(props) {
                 <div className="w-[73rem] p-4 m-auto mt-10">
                     {/* <tbody> */}
                         <div className='my-5'>
-                            <div className='w-1/4 bg-slate-300 '>Tên đề tài:</div>
+                            <div className='w-1/4 bg-slate-300 font-bold'>Tên đề tài:</div>
                             <div  className='w-3/4 bg-sky-200  '>{detai.tendetai}</div>
                         </div>
                         <div className='my-5'>
-                            <div className='w-1/4 bg-slate-300 '>Tên đề tài bằng tiếng Anh:</div>
+                            <div className='w-1/4 bg-slate-300 font-bold'>Tên đề tài bằng tiếng Anh:</div>
                             <div  className='w-3/4 bg-sky-200  '>{detai.tentienganh}</div>
                         </div>
-                        <div className='my-4'>
-                            <div>Sinh viên thực hiện</div>
+                        <div className='my-4 '>
+                            <div className='font-bold'>Sinh viên thực hiện</div>
                             <div></div>
                         </div>
                         <div className='my-4'>
-                            <div>1. Yêu cầu chức năng</div>
+                            <div className='font-bold'>1. Yêu cầu chức năng</div>
                             <div>{detai.mota_kienthuc}</div>
                         </div>
                         <div className='my-4'>
-                            <div>2. Giới thiệu</div>
+                            <div className='font-bold'>2. Giới thiệu</div>
                             <div><pre className='w-[300px]'>{detai.mota_gioithieu}</pre></div>
                         </div>
                         <div className='my-4'>
-                            <div>3. Mục tiêu và yêu cầu chức năng</div>
+                            <div className='font-bold'>3. Mục tiêu và yêu cầu chức năng</div>
                             <div><pre>{detai.mota_yeucau}</pre></div>
                         </div>
                         <div>
-                            <div>4. Tài liệu tham khảo</div>
+                            <div className='font-bold'>4. Tài liệu tham khảo</div>
                             <div ><pre className='w-[300px]'>{detai.mota_tailieu}</pre></div>
                         </div>
                     {/* </tbody> */}
                 </div>
             </div>  
-            <div>adas /t asdasd</div>
         </div>
     );
 }
