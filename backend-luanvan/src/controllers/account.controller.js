@@ -75,21 +75,26 @@ const accountController = {
             return res.status(404).json("Mật khẩu không chính xác.")
         }
         if (account.taikhoan && isPassword) {
-            if (account.phanloai = 4){
-                const sinhvien = await Sinhvien.findById(account.id_nguoidung)
-                return res.status(200).json(sinhvien)
-            }
-            if (account.phanloai = 3){
+            if (account.phanloai = 3) {
+                console.log(account.id_nguoidung)
                 const giangvien = await Giangvien.findById(account.id_nguoidung)
+                console.log("xin chao")
                 return res.status(200).json(giangvien)
-            }
-            if (account.phanloai = 2){
-                const truongkhoa = await Truongkhoa.findById(account.id_nguoidung)
-                return res.status(200).json(truongkhoa)
-            }
-            if (account.phanloai = 1){
-                const quantrivien = await Quantrivien.findById(account.id_nguoidung)
-                return res.status(200).json(quantrivien)
+            } else {
+                if (account.phanloai = "4") {
+                    const sinhvien = await Sinhvien.findById(account.id_nguoidung)
+                    return res.status(200).json(sinhvien)
+                } else {
+                    if (account.phanloai = "2") {
+                        const truongkhoa = await Truongkhoa.findById(account.id_nguoidung)
+                        return res.status(200).json(truongkhoa)
+                    } else {
+                        if (account.phanloai = "1") {
+                            const quantrivien = await Quantrivien.findById(account.id_nguoidung)
+                            return res.status(200).json(quantrivien)
+                        }
+                    }
+                }
             }
         }
         return res.status(500).json(err)

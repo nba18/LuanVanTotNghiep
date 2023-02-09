@@ -7,7 +7,7 @@ const detaiController = {
         try {
             const newDetai = new Detai({
                 tendetai: req.body.tendetai,
-                idgiangvien: req.body.idgiangvien,
+                giangvien: req.body.giangvien,
                 hocky: req.body.hocky,
                 mota_kienthuc: req.body.mota_kienthuc,
                 mota_gioithieu: req.body.mota_gioithieu,
@@ -16,15 +16,16 @@ const detaiController = {
                 mota_khac: req.body.mota_khac,
             });
             const detai = await newDetai.save();
+            // console.log(detai);
             await Hocky.findByIdAndUpdate(
                 { _id: req.body.hocky },
                 {
                     $push: {
-                        danhsachdetai: detai._id
+                        danhsachdetai_dexuat: detai._id
                     }
                 });
             await giangvienModel.findByIdAndUpdate(
-                { _id: req.body.idgiangvien },
+                { _id: req.body.giangvien },
                 {
                     $push: {
                         danhsachdetai_dexuat: detai._id
@@ -37,6 +38,36 @@ const detaiController = {
             res.status(500).json(err);
         }
     },
+    layDetai: async(req,res)=>{
+        
+        const detai = await Detai.find().populate( { path: 'hocky'} )
+        if (!detai) {
+            return res.status(403).json("Rỗng")
+        }
+        return res.status(200).json(detai)
+
+    },
+    //Ds de tai cua gv
+    laydsdetai: async(req, res) => {
+        // console.log(req.params.id);
+        try{
+            const gv = await giangvienModel.findById(req.params.id).populate({ path: 'danhsachdetai_dexuat', populate: { path: 'hocky' } })
+            // console.log(gv.danhsachdetai_dexuat);
+            res.status(200).json(gv.danhsachdetai_dexuat);
+        }catch(err){
+            res.status(500).json(err);
+        }
+    },
+    //lay 1 de tai
+    lay1detai: async(req,res)=>{
+        // console.log(req.params.id);
+        try{
+            const detai = await Detai.findById(req.params.id).populate({ path: 'hocky'})
+            res.status(200).json(detai);
+        }catch(err){
+            res.status(500).json(err);
+        }
+    }
 }
 
 module.exports = detaiController
