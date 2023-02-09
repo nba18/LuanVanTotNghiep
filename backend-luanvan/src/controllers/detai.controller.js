@@ -7,7 +7,7 @@ const detaiController = {
         try {
             const newDetai = new Detai({
                 tendetai: req.body.tendetai,
-                idgiangvien: req.body.idgiangvien,
+                giangvien: req.body.giangvien,
                 hocky: req.body.hocky,
                 mota_kienthuc: req.body.mota_kienthuc,
                 mota_gioithieu: req.body.mota_gioithieu,
