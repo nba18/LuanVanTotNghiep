@@ -16,11 +16,14 @@ const hocky = mongoose.Schema(
         },
         danhsachdetai: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Detai'
+            ref: 'Detai',
+            default: []
+
         }],
         danhsachsinhvien: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Sinhvien'
+            ref: 'Sinhvien',
+            default: []
         }],
         trangthai: {
             type: Boolean,

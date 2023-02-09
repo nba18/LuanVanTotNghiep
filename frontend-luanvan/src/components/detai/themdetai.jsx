@@ -4,10 +4,9 @@ import { useForm } from "react-hook-form";
 import { detaiAPI, hockyAPI } from "../../api";
 
 function Themdetai() {
-
+    const id_nguoidung = localStorage.getItem("id");
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
-        data.giangvien = localStorage.getItem("id_nguoidung")
         const tempt = await detaiAPI.themdetai(data);
         console.log(tempt);
     }
@@ -50,7 +49,7 @@ function Themdetai() {
                             </div>
                             <div className="pt-2">
                                 <TextField {...register('mota_kienthuc')}
-                                    name="mota1"
+                                    name="mota_kienthuc"
                                     label="Yêu cầu kiến thức"
                                     type="text"
                                     multiline
@@ -60,7 +59,7 @@ function Themdetai() {
                             </div>
                             <div className="pt-2">
                                 <TextField {...register('mota_gioithieu')}
-                                    name="mota2"
+                                    name="mota_gioithieu"
                                     label="Giới thiệu"
                                     type="text"
                                     multiline
@@ -70,7 +69,7 @@ function Themdetai() {
                             </div>
                             <div className="pt-2">
                                 <TextField {...register('mota_yeucau')}
-                                    name="mota3"
+                                    name="mota_yeucau"
                                     label="Mục tiêu và yêu cầu chức năng"
                                     type="text"
                                     multiline
@@ -80,7 +79,7 @@ function Themdetai() {
                             </div>
                             <div className="pt-2">
                                 <TextField {...register('mota_tailieu')}
-                                    name="mota4"
+                                    name="mota_tailieu"
                                     label="Tài liệu tham khảo"
                                     type="text"
                                     multiline
@@ -90,7 +89,7 @@ function Themdetai() {
                             </div>
                             <div className="pt-2">
                                 <TextField {...register('mota_khac')}
-                                    name="motakhac"
+                                    name="mota_khac"
                                     label="Yêu cầu khác"
                                     type="text"
                                     multiline

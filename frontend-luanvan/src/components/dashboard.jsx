@@ -5,6 +5,14 @@ import { RiAccountCircleLine } from 'react-icons/ri';
 import { GrDocumentTime } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
 function Dashboard() {
+
+    const logout = async()=>{
+        localStorage.removeItem("hoten");
+        localStorage.removeItem("email");
+        localStorage.removeItem("id");
+        localStorage.removeItem("phanquyen");
+    }
+
     return (
         <div className="">
             <div className="bg-[#2A84EB] rounded-lg h-[44rem] w-[265px] m-5 fixed shadow-lg shadow-blue-500/50">
@@ -31,7 +39,7 @@ function Dashboard() {
                     </div>
                 </Link>
                 
-                <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
+                <div onClick={logout} className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
                     <div className="p-[5px]"><RiAccountCircleLine /></div>Thông tin cá nhân
                 </div>
             </div>

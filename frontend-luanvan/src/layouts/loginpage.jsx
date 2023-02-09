@@ -3,21 +3,21 @@ import { useForm } from "react-hook-form";
 import { nguoidungAPI } from "../api";
 import LogoCTU from "../assets/logo.png";
 import { Button, TextField } from '@mui/material';
+import {  useNavigate } from "react-router-dom";
 function Loginpage() {
     const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
     const onSubmit = async (data) => {
         const temp = await nguoidungAPI.dangnhap(data)
-        localStorage.setItem("id_nguoidung",temp._id)
-        console.log(temp)
-        // localStorage.setItem("phanquyen", temp.data.phanloai)
-        // localStorage.setItem("hoten", temp.data.hoten)
-        // localStorage.setItem("email", temp.data.email)
-        // if (temp.data.phanloai = 4) {
-        //     localStorage.setItem("mssv", temp.data.mssv)
-        // }
-        // if (temp.data.phanloai = 3) {
-        //     localStorage.setItem("msgv", temp.data.msgv)
-        // }
+        localStorage.setItem("phanquyen", temp.data.phanloai)
+        localStorage.setItem("hoten", temp.data.hoten)
+        localStorage.setItem("email", temp.data.email)
+        if (temp.data.phanloai = 4) {
+            localStorage.setItem("mssv", temp.data.mssv)
+        }
+        if (temp.data.phanloai = 3) {
+            localStorage.setItem("msgv", temp.data.msgv)
+        }
     }
     return (
         <div className="w-full h-screen bg-[#F0F2F5]">

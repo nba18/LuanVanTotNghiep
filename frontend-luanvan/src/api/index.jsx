@@ -34,6 +34,15 @@ export const detaiAPI = {
     themdetai: (data) => {
         return callApi('post', `/giangvien/themdetai`, data);
     },
+    laydetai: () => {
+        return callApi('get', `/giangvien/laydetai`,null);
+    },
+    laydsdetai: (id) => {
+        return callApi('get', `/giangvien/laydsdetai/${id}`,null);
+    },
+    lay1detai: (id) => {
+        return callApi('get', `/giangvien/lay1detai/${id}`, null);
+    },
 }
 export const nguoidungAPI = {
     dangky: (data) => {
