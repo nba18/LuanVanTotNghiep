@@ -11,6 +11,7 @@ function Themdetai() {
         // console.log(detai);
         const tempt = await detaiAPI.themdetai(detai);
         console.log(tempt);
+        window.alert("them thanh cong")
     }
 
     const [hockyList, sethockyList] = useState([]);
