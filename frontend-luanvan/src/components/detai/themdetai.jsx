@@ -7,9 +7,7 @@ function Themdetai() {
     const id_nguoidung = localStorage.getItem("id");
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
-        let detai ={...data, giangvien: id_nguoidung};
-        // console.log(detai);
-        const tempt = await detaiAPI.themdetai(detai);
+        const tempt = await detaiAPI.themdetai(data);
         console.log(tempt);
     }
 
