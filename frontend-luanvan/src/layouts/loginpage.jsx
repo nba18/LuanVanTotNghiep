@@ -14,9 +14,11 @@ function Loginpage() {
         localStorage.setItem("email", temp.data.email)
         if (temp.data.phanloai = 4) {
             localStorage.setItem("mssv", temp.data.mssv)
+            navigate("/hocky")
         }
         if (temp.data.phanloai = 3) {
             localStorage.setItem("msgv", temp.data.msgv)
+            navigate("/dsdetai")
         }
     }
     return (
