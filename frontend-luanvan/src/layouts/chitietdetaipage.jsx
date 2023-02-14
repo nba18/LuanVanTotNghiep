@@ -3,6 +3,8 @@ import { useMatch } from 'react-router-dom';
 import { detaiAPI } from '../api';
 import Dashboard from '../components/dashboard';
 // import PropTypes from 'prop-types';
+import { Markup } from 'interweave';
+
 
 Chitietdetaipage.propTypes = {
     
@@ -36,8 +38,10 @@ function Chitietdetaipage(props) {
                 <div className="w-[73rem] p-4 m-auto mt-5">
                     {/* <tbody> */}
                         <div className='my-5'>
-                            <div className='w-1/4 font-bold'>Tên đề tài:</div>
+                            <div className='w-1/4 font-bold'>Tên đề tài</div>
                             <div  className='w-3/4'>{detai.tendetai}</div>
+                            <td dangerouslySetInnerHTML={{__html: detai.tendetai}} />
+                            <Markup content={detai.tendetai} />
                         </div>
                         <div className='my-5'>
                             <div className='w-1/4 font-bold'>Tên đề tài bằng tiếng Anh:</div>
@@ -48,20 +52,30 @@ function Chitietdetaipage(props) {
                             <div></div>
                         </div>
                         <div className='my-4'>
-                            <div className='font-bold'>1. Yêu cầu chức năng</div>
+                            <div className='font-bold'>1. Yêu cầu kiến thức</div>
                             <div>{detai.mota_kienthuc}</div>
+                            <td dangerouslySetInnerHTML={{__html: detai.mota_kienthuc}} />
+                            <Markup content={detai.mota_kienthuc} />
                         </div>
                         <div className='my-4'>
                             <div className='font-bold'>2. Giới thiệu</div>
                             <div>{detai.mota_gioithieu}</div>
+                            <td dangerouslySetInnerHTML={{__html: detai.mota_gioithieu}} />
                         </div>
                         <div className='my-4'>
                             <div className='font-bold'>3. Mục tiêu và yêu cầu chức năng</div>
                             <div>{detai.mota_yeucau}</div>
+                            <td dangerouslySetInnerHTML={{__html: detai.mota_yeucau}} />
                         </div>
-                        <div>
+                        <div className='my-4'>
                             <div className='font-bold'>4. Tài liệu tham khảo</div>
                             <div >{detai.mota_tailieu}</div>
+                        </div>
+                        <div className='my-4'>
+                            <div className='font-bold'>5. Yêu cầu khác</div>
+                            <div >{detai.mota_khac}</div>
+                            <td dangerouslySetInnerHTML={{__html: detai.mota_khac}} />
+                            {/* <Markup content={detai.mota_khac} /> */}
                         </div>
                     {/* </tbody> */}
                 </div>

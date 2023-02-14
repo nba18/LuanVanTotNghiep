@@ -20,23 +20,19 @@ const detai = mongoose.Schema(
         },
         mota_kienthuc: {
             type: String,
-            required: true,
             
             //Kiến thức yêu cầu.
         },
         mota_gioithieu: {
             type: String,
-            required: true,
             //Giới thiệu.
         },
         mota_yeucau: {
             type: String,
-            required: true,
             //Mục tiêu và yêu cầu chức năng.
         },
         mota_tailieu: {
             type: String,
-            required: true,
             //Tài liệu tham khảo.
         },
         mota_khac:{

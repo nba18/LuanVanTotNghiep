@@ -4,6 +4,10 @@ const quantrivien = mongoose.Schema(
     {
         msnd: {
             type: String,
+        },
+        hoten: {
+            type: String,
+            default:"Admin"
         }, 
         phanloai: {
             type: Number,

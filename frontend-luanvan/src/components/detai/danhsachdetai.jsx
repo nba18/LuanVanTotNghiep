@@ -27,7 +27,7 @@ function Danhsachdetai(props) {
             <div className="">
                 <div className="bg-[#2A84EB] rounded-lg h-10 w-[73rem] p-2 m-auto translate-y-6 shadow-lg shadow-blue-500/50 text-center text-white font-bold" >Danh sách đề tài đề xuất</div>
                 <div className="w-[75rem] m-auto rounded-lg bg-white shadow-lg pt-5">
-                    <div className="grid grid-cols-[150px_300px_300px_300px_120px] text-center py-5 font-bold">
+                    <div className="grid grid-cols-[100px_650px_150px_150px_150px] text-center py-5 font-bold">
                         <div className="w-1/8 p-1 ">STT</div>
                         <div className="w-3/8 p-1 ">Tên đề tài</div>
                         <div className="w-2/8 p-1 ">Niên khóa</div>
