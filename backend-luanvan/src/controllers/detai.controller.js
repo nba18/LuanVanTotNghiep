@@ -67,7 +67,17 @@ const detaiController = {
         }catch(err){
             res.status(500).json(err);
         }
-    }
+    },
+    capnhatdetai: async(req, res) => {
+        try{
+            console.log("id",req.params.id,req.body);
+            const updateData = req.body;
+            await Detai.findByIdAndUpdate(req.params.id,updateData);
+            return res.status(200).json('Cập nhật thành công');
+        }catch(err){
+            res.status(500).json(err);
+        }
+    },
 }
 
 module.exports = detaiController

@@ -43,6 +43,9 @@ export const detaiAPI = {
     lay1detai: (id) => {
         return callApi('get', `/giangvien/lay1detai/${id}`, null);
     },
+    capnhatdetai: (id,data) => {
+        return callApi('put', `/giangvien/capnhat/${id}`, data);
+    },
 }
 export const nguoidungAPI = {
     dangky: (data) => {

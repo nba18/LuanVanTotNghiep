@@ -8,5 +8,6 @@ router.get('/laydetai', detaicontroller.layDetai);
 router.get('/laydsdetai/:id', detaicontroller.laydsdetai);
 //lay 1 de tai 
 router.get('/lay1detai/:id', detaicontroller.lay1detai);
+router.put('/capnhat/:id', detaicontroller.capnhatdetai);
 
 module.exports = router;

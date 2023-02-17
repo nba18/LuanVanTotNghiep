@@ -7,6 +7,7 @@ import Dsdetaipage from './layouts/dsdetaipage';
 import Registerpage from './layouts/registerpage';
 import Loginpage from './layouts/loginpage';
 import Chitietdetaipage from './layouts/chitietdetaipage';
+import Detaitonghoppage from './layouts/detaitonghoppage';
 // import Dashboard from './components/dashboard';
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/hocky' element={<Hockypage />} />;
         <Route path='/detai' element={<Detaipage />} />;
         <Route path='/dsdetai' element={<Dsdetaipage />} />;
+        <Route path='/detaitonghop' element={<Detaitonghoppage />} />;
         <Route path={`/detai/:detaiid`}element={<Chitietdetaipage />} />;
       </Routes>
 
