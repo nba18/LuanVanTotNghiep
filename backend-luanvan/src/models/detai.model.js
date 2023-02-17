@@ -18,6 +18,10 @@ const detai = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Sinhvien'
         },
+        listsinhvien:[{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Sinhvien'
+        }],
         hocky: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Hocky'

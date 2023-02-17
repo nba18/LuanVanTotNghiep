@@ -9,9 +9,10 @@ Danhsachtonghop.propTypes = {
 
 function Danhsachtonghop(props) {
     const [list, setDetaiList] = useState([]);
+    console.log(localStorage.getItem("id"));
     const fetchDetai = async () => {
         const List = await detaiAPI.laydsdetai(localStorage.getItem("id"));
-        // console.log(List.data)
+        console.log(List.data)
         setDetaiList(List.data);
         
     };

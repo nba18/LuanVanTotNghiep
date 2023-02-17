@@ -69,8 +69,8 @@ const accountController = {
         if (!account) {
             return res.status(404).json("Tài khoản không tồn tại.")
         }
-        const hashed = await SHA256(req.body.matkhau)
-        const isPassword = (account.matkhau === hashed) ? true : false
+        // const hashed = await SHA256(req.body.matkhau)
+        const isPassword = (account.matkhau === req.body.matkhau) ? true : false
         if (!isPassword) {
             return res.status(404).json("Mật khẩu không chính xác.")
         }

@@ -13,6 +13,7 @@ function Dsdetaicanhan_page(props) {
     const [detai, setDetai] = useState([]);
     const fetchDetai = async () => {
         const List = await detaiAPI.lay1detai(match.params.id);
+        // console.log(List.data)
         setDetai(List.data);
     };
     useEffect(() => {

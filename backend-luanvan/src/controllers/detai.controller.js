@@ -110,6 +110,5 @@ const detaiController = {
             return res.status(200).json('Cập nhật thành công');
         }catch(err){
             res.status(500).json(err);
-}
-
-module.exports = detaiController
+        }}}
+module.exports = detaiController;
