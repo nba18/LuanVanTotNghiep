@@ -51,7 +51,11 @@ export const detaiAPI = {
     },
     yeucauchinhsua: (id) => {
         return callApi('put', `/truongkhoa/yeucauchinhsua`,id)
-    }
+    },
+    capnhatdetai: (id,data) => {
+        return callApi('put', `/giangvien/capnhat/${id}`, data);
+    },
+
 }
 export const nguoidungAPI = {
     dangky: (data) => {

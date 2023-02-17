@@ -78,8 +78,8 @@ const detaiController = {
             res.status(500).json(err);
         }
     },
-    //duyet de tai 
-    duyetdetai: async(req,res)=>{
+     //duyet de tai 
+     duyetdetai: async(req,res)=>{
         try{
             const detai = await Detai.findByIdAndUpdate(req.body.id ,
             {
@@ -101,7 +101,14 @@ const detaiController = {
         }catch(err){
             return res.status(500).json(err);
         }
-    }
-}
-
-module.exports = detaiController
+    },
+    capnhatdetai: async(req, res) => {
+        try{
+            console.log("id",req.params.id,req.body);
+            const updateData = req.body;
+            await Detai.findByIdAndUpdate(req.params.id,updateData);
+            return res.status(200).json('Cập nhật thành công');
+        }catch(err){
+            res.status(500).json(err);
+        }}}
+module.exports = detaiController;

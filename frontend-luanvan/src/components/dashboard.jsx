@@ -47,7 +47,11 @@ function Dashboard() {
                         <div className="p-[5px]"><RiAccountCircleLine /></div>Thông tin cá nhân
                     </div>
                 </Link>
-
+                <Link to="/detaitonghop">
+                    <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
+                        <div className="p-[5px]"><HiOutlineDocumentText /></div>Danh sách đề tài tổng hợp
+                    </div>
+                </Link>
                 <div onClick={logout} className="w-full text-center absolute bottom-5">
                     <Button variant="contained">Đăng xuất</Button>
                 </div>

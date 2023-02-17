@@ -29,7 +29,11 @@ function Chitietdetaipage(props) {
             </div>
             <div className="w-full h-full ">
                 <div className="bg-[#2A84EB] rounded-lg h-10 w-[73rem] p-2 m-auto translate-y-6 shadow-lg shadow-blue-500/50 text-center text-white font-bold" >Chi tiết đề tài</div>
-                <div className="w-[73rem] p-4 m-auto mt-5">
+                {/* <div className='w-[73rem] p-2 m-auto flex mt-10'>
+                    <div className='w-1/4 h-20 '></div>
+                    <div className='w-3/4 bg-sky-200 h-20 '></div>
+                </div> */}
+                <div className="w-[73rem] p-4 m-auto mt-10">
                     {/* <tbody> */}
                         <div className='my-5'>
                             <div className='w-1/4 font-bold'>Tên đề tài:</div>

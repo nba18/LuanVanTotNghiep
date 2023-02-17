@@ -23,10 +23,10 @@ const sinhvien = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Detai'
         }],
-        giangvienhuongdan: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Giangvien'
-        },
+        danhandetai: {
+            type: Boolean,
+            default: false
+        }
 
         
     },

@@ -6,9 +6,11 @@ import Detaipage from './layouts/detaipage';
 import Dsdetaipage from './layouts/dsdetaipage';
 import Registerpage from './layouts/registerpage';
 import Loginpage from './layouts/loginpage';
+
 import Dsdetaicanhan_page from './layouts/dsdetaicanhan_page';
 import Xetduyetdetai_page from './layouts/xetduyetdetai_page';
 import Hosocanhan_page from './layouts/hosocanhan_page';
+import Detaitonghoppage from './layouts/detaitonghoppage';
 // import Dashboard from './components/dashboard';
 function App() {
   return (
@@ -20,9 +22,11 @@ function App() {
         <Route path='/hocky' element={<Hockypage />} />;
         <Route path='/detai' element={<Detaipage />} />;
         <Route path='/dsdetai' element={<Dsdetaipage />} />;
-        <Route path='/duyetdetai' element={<Xetduyetdetai_page/>} />
+        {/* <Route path={`/sua/:detaiid`}element={<Chitietdetaipage />} />; */}
+        <Route path='/duyetdetai' element={<Xetduyetdetai_page />} />
         <Route path={`/detai/:detaiid`}element={<Dsdetaicanhan_page />} />;
         <Route path='/hoso' element={<Hosocanhan_page />} />;
+        <Route path='/detaitonghop' element={<Detaitonghoppage />} />;
       </Routes>
 
     </BrowserRouter>
