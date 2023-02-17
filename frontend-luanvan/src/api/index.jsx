@@ -40,9 +40,18 @@ export const detaiAPI = {
     laydsdetai: (id) => {
         return callApi('get', `/giangvien/laydsdetai/${id}`,null);
     },
+    laydsdetaichuaduyet: () => {
+        return callApi('get', `/truongkhoa/laydsdetaichuaduyet`,null);
+    },
     lay1detai: (id) => {
         return callApi('get', `/giangvien/lay1detai/${id}`, null);
     },
+    duyetdetai: (id) => {
+        return callApi('put', `/truongkhoa/duyetdetai`,id)
+    },
+    yeucauchinhsua: (id) => {
+        return callApi('put', `/truongkhoa/yeucauchinhsua`,id)
+    }
 }
 export const nguoidungAPI = {
     dangky: (data) => {
@@ -52,3 +61,4 @@ export const nguoidungAPI = {
         return callApi('post', `/dangnhap`, data);
     }
 }
+

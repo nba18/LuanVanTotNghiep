@@ -58,6 +58,16 @@ const detaiController = {
             res.status(500).json(err);
         }
     },
+    //lay danh sach de tai chua duyet
+    laydsdetaichuaduyet: async(req, res) => {
+        try{
+            const detai = await Detai.find({trangthai:1}).populate({ path: 'hocky'})
+            // console.log(gv.danhsachdetai_dexuat);
+            res.status(200).json(detai);
+        }catch(err){
+            res.status(500).json(err);
+        }
+    },
     //lay 1 de tai
     lay1detai: async(req,res)=>{
         // console.log(req.params.id);
@@ -66,6 +76,30 @@ const detaiController = {
             res.status(200).json(detai);
         }catch(err){
             res.status(500).json(err);
+        }
+    },
+    //duyet de tai 
+    duyetdetai: async(req,res)=>{
+        try{
+            const detai = await Detai.findByIdAndUpdate(req.body.id ,
+            {
+                trangthai: 2,
+            });
+            return res.status(200).json(detai);
+        }catch(err){
+            return res.status(500).json(err);
+        }
+    },
+    yeucauchinhsua: async(req,res)=>{
+        // console.log(req.params.id);
+        try{
+            const detai = await Detai.findByIdAndUpdate(req.body.id,
+            {
+                trangthai: 3,
+            });
+            return res.status(200).json(detai);
+        }catch(err){
+            return res.status(500).json(err);
         }
     }
 }

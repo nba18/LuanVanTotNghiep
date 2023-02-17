@@ -9,7 +9,6 @@ function Loginpage() {
     const navigate = useNavigate();
     const onSubmit = async (data) => {
         const temp = await nguoidungAPI.dangnhap(data)
-        // console.log(temp.data)
         localStorage.setItem("phanquyen", temp.data.phanloai)
         localStorage.setItem("hoten", temp.data.hoten)
         localStorage.setItem("email", temp.data.email)

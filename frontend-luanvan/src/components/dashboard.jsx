@@ -8,7 +8,7 @@ import { Button, linkClasses } from "@mui/material";
 
 function Dashboard() {
     const navigate = useNavigate()
-    const logout = async()=>{
+    const logout = async () => {
         navigate('/')
         localStorage.clear()
     }
@@ -29,19 +29,25 @@ function Dashboard() {
                         <div className="p-[5px]"><MdOutlineAddCircleOutline /></div>Thêm đề tài
                     </div>
                 </Link>
-            
-                <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
-                    <div className="p-[5px]"><GrDocumentTime /></div>Xét duyệt đề tài
-                </div>
+
+                <Link to="/duyetdetai">
+                    <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
+                        <div className="p-[5px]"><GrDocumentTime /></div>Xét duyệt đề tài
+                    </div>
+                </Link>
+
+
                 <Link to="/dsdetai">
                     <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
                         <div className="p-[5px]"><HiOutlineDocumentText /></div>DS đề tài cá nhân
                     </div>
                 </Link>
-                
-                <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
-                    <div className="p-[5px]"><RiAccountCircleLine /></div>Thông tin cá nhân
-                </div>
+                <Link to='/hoso'>
+                    <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
+                        <div className="p-[5px]"><RiAccountCircleLine /></div>Thông tin cá nhân
+                    </div>
+                </Link>
+
                 <div onClick={logout} className="w-full text-center absolute bottom-5">
                     <Button variant="contained">Đăng xuất</Button>
                 </div>
