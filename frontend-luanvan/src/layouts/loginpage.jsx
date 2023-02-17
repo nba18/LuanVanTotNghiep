@@ -23,6 +23,9 @@ function Loginpage() {
         }
 
     }
+    const chuyen = async => {
+        navigate('/register')
+    }
     return (
         <div className="w-full h-screen bg-[#F0F2F5]">
             <form className="text-center pt-10" onSubmit={handleSubmit(onSubmit)}>
@@ -50,6 +53,7 @@ function Loginpage() {
                     />
                 </div> 
                 <div className="pt-7"><Button type='submit' variant="contained" >Đăng nhập</Button></div>
+                <div className="pt-7"><Button variant="contained" onClick={chuyen}>Kích hoạt tài khoản</Button></div>
             </form>
             <div className="w-full bg-[#1565C0] h-20 mt-24"></div>
         </div>
