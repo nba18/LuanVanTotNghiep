@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 
 const quantrivien = mongoose.Schema(
     {
-        msnd: {
+        hoten: {
             type: String,
+            default:"Admin"
         }, 
         phanloai: {
             type: Number,

@@ -11,7 +11,6 @@ function DShockycard(props) {
         reload();
         
     }
-
     const mokhoa = async() => {
         await hockyAPI.mokhoahocky({id});
         reload();

@@ -2,15 +2,29 @@ import React, { useEffect, useState } from "react";
 import { TextField, Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { detaiAPI, hockyAPI } from "../../api";
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 function Themdetai() {
     const id_nguoidung = localStorage.getItem("id");
+    const [value1, setValue1] = useState('');
+    const [value2, setValue2] = useState('');
+    const [value3, setValue3] = useState('');
+    const [value4, setValue4] = useState('');
+    const [value5, setValue5] = useState('');
+    const [value6, setValue6] = useState('');
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
-        let detai ={...data, giangvien: id_nguoidung};
-        // console.log(detai);
+        data.tendetai = value1;
+        data.mota_kienthuc = value2;
+        data.mota_gioithieu = value3;
+        data.mota_yeucau = value4;
+        data.mota_tailieu = value5;
+        data.mota_khac = value6;
+        console.log(data);
+        let detai = { ...data, giangvien: id_nguoidung };
         const tempt = await detaiAPI.themdetai(detai);
         console.log(tempt);
+        window.alert("them thanh cong")
     }
 
     const [hockyList, sethockyList] = useState([]);
@@ -20,7 +34,7 @@ function Themdetai() {
         sethockyList(List.data);
     };
     useEffect(() => {
-        
+
         fetchHocky();
     }, []);
 
@@ -30,77 +44,44 @@ function Themdetai() {
                 <div className="bg-[#2A84EB] rounded-lg h-10 w-[73rem] p-2 m-auto translate-y-6 shadow-lg shadow-blue-500/50 text-white font-bold text-center" >Thêm đề tài mới</div>
                 <div className="w-[75rem] m-auto rounded-lg bg-white h-full shadow-lg mb-5">
                     <div className="pt-12">
-                        <form className="text-center" onSubmit={handleSubmit(onSubmit)}>
+                        <form className="" onSubmit={handleSubmit(onSubmit)}>
                             <div className="">
-                                <TextField {...register('tendetai')}
-                                    name="tendetai"
-                                    label="Tên đề tài"
-                                    type="text"
-                                    style={{ width: "700px" }}
-                                />
+                                <div className="font-bold ml-10">1.Tên đề tài</div>
+                                <ReactQuill theme="snow" value={value1} onChange={setValue1} className="w-[1000px] m-auto mt-2" />
                             </div>
-                            <div className="w-[700px] m-auto mt-2">
-                                <label  className=''>Niên khóa:</label>
-                                <select  id="hocky" type='select'   {...register('hocky',{ required: true })}>
-                                    {hockyList?.map(hocky=>{
-                                            return(
+                            <div className="pt-2 h-[230px]">
+                                <div className="font-bold ml-10">2. Mô tả kiến thức</div>
+                                <ReactQuill theme="snow" value={value2} onChange={setValue2} className="w-[1000px] h-[150px] m-auto mt-2 " />
+                            </div>
+                            <div className="pt-2 h-[230px]">
+                                <div className="font-bold ml-10">3. Mô tả giới thiệu</div>
+                                <ReactQuill theme="snow" value={value3} onChange={setValue3} className="w-[1000px] h-[150px] m-auto mt-2" />
+                            </div>
+                            <div className="pt-2 h-[230px]">
+                                <div className="font-bold ml-10">4. Mô tả yêu cầu</div>
+                                <ReactQuill theme="snow" value={value4} onChange={setValue4} className="w-[1000px] h-[150px] m-auto mt-2" />
+                            </div>
+                            <div className="pt-2 h-[230px]">
+                                <div className="font-bold ml-10">5. Mô tả tài liệu</div>
+                                <ReactQuill theme="snow" value={value5} onChange={setValue5} className="w-[1000px] h-[150px] m-auto mt-2" />
+                            </div>
+                            <div className="pt-2 h-[230px]">
+                                <div className="font-bold ml-10">6. Mô tả khác</div>
+                                <ReactQuill theme="snow" value={value6} onChange={setValue6} className="w-[1000px] h-[150px] m-auto mt-2" />
+                            </div>
+                            <div className="pt-2">
+                                <div className="font-bold ml-10">7.Niên khóa</div>
+                                <div className="w-[1000px] m-auto mt-2">
+                                    <select id="hocky" type='select'   {...register('hocky', { required: true })} className="">
+                                        {hockyList?.map(hocky => {
+                                            return (
                                                 <option key={hocky?._id} value={hocky?._id}>{hocky?.nambatdau} - {hocky?.namketthuc} Học kỳ: {hocky?.hocky}</option>
                                             );
-                                    })}
-                                </select>   
+                                        })}
+                                    </select>
+                                </div>
                             </div>
-                            <div className="pt-2">
-                                <TextField {...register('mota_kienthuc')}
-                                    name="mota_kienthuc"
-                                    label="Yêu cầu kiến thức"
-                                    type="text"
-                                    multiline
-                                    rows={5}
-                                    style={{ width: "700px" }}
-                                />
-                            </div>
-                            <div className="pt-2">
-                                <TextField {...register('mota_gioithieu')}
-                                    name="mota_gioithieu"
-                                    label="Giới thiệu"
-                                    type="text"
-                                    multiline
-                                    rows={5}
-                                    style={{ width: "700px" }}
-                                />
-                            </div>
-                            <div className="pt-2">
-                                <TextField {...register('mota_yeucau')}
-                                    name="mota_yeucau"
-                                    label="Mục tiêu và yêu cầu chức năng"
-                                    type="text"
-                                    multiline
-                                    rows={5}
-                                    style={{ width: "700px" }}
-                                />
-                            </div>
-                            <div className="pt-2">
-                                <TextField {...register('mota_tailieu')}
-                                    name="mota_tailieu"
-                                    label="Tài liệu tham khảo"
-                                    type="text"
-                                    multiline
-                                    rows={5}
-                                    style={{ width: "700px" }}
-                                />
-                            </div>
-                            <div className="pt-2">
-                                <TextField {...register('mota_khac')}
-                                    name="mota_khac"
-                                    label="Yêu cầu khác"
-                                    type="text"
-                                    multiline
-                                    rows={5}
-                                    style={{ width: "700px" }}
-                                />
-                            </div>
-                            
-                            <div className="pt-5 pb-5"><Button type='submit' variant="contained" className="w-[500px]" >Thêm</Button></div>
+                            <div className="text-center pt-5 pb-5 w-full"><Button type='submit' variant="contained" className="w-[1000px]" >Thêm</Button></div>
                         </form>
                     </div>
                 </div>

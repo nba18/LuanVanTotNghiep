@@ -20,11 +20,7 @@ const hocky = mongoose.Schema(
             default: []
 
         }],
-        danhsachsinhvien: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Sinhvien',
-            default: []
-        }],
+
         trangthai: {
             type: Boolean,
             default: true,

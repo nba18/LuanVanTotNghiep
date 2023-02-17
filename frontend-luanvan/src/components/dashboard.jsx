@@ -3,14 +3,14 @@ import { MdOutlineAddCircleOutline } from 'react-icons/md';
 import { HiOutlineDocumentText } from 'react-icons/hi';
 import { RiAccountCircleLine } from 'react-icons/ri';
 import { GrDocumentTime } from 'react-icons/gr';
-import { Link } from 'react-router-dom';
-function Dashboard() {
+import { Link, useNavigate } from 'react-router-dom';
+import { Button, linkClasses } from "@mui/material";
 
-    const logout = async()=>{
-        localStorage.removeItem("hoten");
-        localStorage.removeItem("email");
-        localStorage.removeItem("id");
-        localStorage.removeItem("phanquyen");
+function Dashboard() {
+    const navigate = useNavigate()
+    const logout = async () => {
+        navigate('/')
+        localStorage.clear()
     }
 
     return (
@@ -29,13 +29,22 @@ function Dashboard() {
                         <div className="p-[5px]"><MdOutlineAddCircleOutline /></div>Thêm đề tài
                     </div>
                 </Link>
-            
-                <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
-                    <div className="p-[5px]"><GrDocumentTime /></div>Xét duyệt đề tài
-                </div>
+
+                <Link to="/duyetdetai">
+                    <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
+                        <div className="p-[5px]"><GrDocumentTime /></div>Xét duyệt đề tài
+                    </div>
+                </Link>
+
+
                 <Link to="/dsdetai">
                     <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
-                        <div className="p-[5px]"><HiOutlineDocumentText /></div>Danh sách đề tài
+                        <div className="p-[5px]"><HiOutlineDocumentText /></div>DS đề tài cá nhân
+                    </div>
+                </Link>
+                <Link to='/hoso'>
+                    <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
+                        <div className="p-[5px]"><RiAccountCircleLine /></div>Thông tin cá nhân
                     </div>
                 </Link>
                 <Link to="/detaitonghop">
@@ -43,8 +52,8 @@ function Dashboard() {
                         <div className="p-[5px]"><HiOutlineDocumentText /></div>Danh sách đề tài tổng hợp
                     </div>
                 </Link>
-                <div onClick={logout} className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
-                    <div className="p-[5px]"><RiAccountCircleLine /></div>Thông tin cá nhân
+                <div onClick={logout} className="w-full text-center absolute bottom-5">
+                    <Button variant="contained">Đăng xuất</Button>
                 </div>
             </div>
         </div>

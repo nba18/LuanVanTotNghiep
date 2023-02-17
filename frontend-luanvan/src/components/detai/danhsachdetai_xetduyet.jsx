@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { detaiAPI } from '../../api';
-import Detaicard from './detaicard';
+import Detaicard_xetduyet from './detaicard_xetduyet';
 // import PropTypes from 'prop-types';
 
-Danhsachdetai.propTypes = {
+Danhsachdetai_xetduyet.propTypes = {
     
 };
 
-function Danhsachdetai(props) {
+function Danhsachdetai_xetduyet(props) {
 
     const [list, setDetaiList] = useState([]);
     const fetchDetai = async () => {
-        const List = await detaiAPI.laydsdetai(localStorage.getItem("id"));
-        // console.log(List.data)
+        const List = await detaiAPI.laydsdetaichuaduyet();
         setDetaiList(List.data);
         
     };
     useEffect(() => {
-        
         fetchDetai();
     }, []);
 
@@ -27,19 +25,19 @@ function Danhsachdetai(props) {
             <div className="">
                 <div className="bg-[#2A84EB] rounded-lg h-10 w-[73rem] p-2 m-auto translate-y-6 shadow-lg shadow-blue-500/50 text-center text-white font-bold" >Danh sách đề tài đề xuất</div>
                 <div className="w-[75rem] m-auto rounded-lg bg-white shadow-lg pt-5">
-                    <div className="grid grid-cols-[100px_650px_150px_145px_150px] text-center py-5 font-bold">
+                    <div className="grid grid-cols-[100px_550px_150px_245px_150px] text-center py-5 font-bold">
                         <div className="w-1/8 p-1 ">STT</div>
                         <div className="w-3/8 p-1 ">Tên đề tài</div>
-                        <div className="w-2/8 p-1 ">Niên khóa</div>
-                        <div className="w-1/8 p-1 ">Học kỳ</div>
-                        <div className="w-1/8 pl-2 ">Trạng thái</div>
+                        <div className="w-2/8 p-1 ">Niên khóa: Học kỳ</div>
+                        <div className="w-1/8 p-1 ">Giảng viên</div>
+                        <div className="w-1/8 pl-2 ">Xét duyệt</div>
                     </div>
                     <div  className="">
                         {list.map((detai, index) => {
                             return (
-                                <Link to={`/detai/${detai._id}`}  key={detai._id} className='' >
-                                    <Detaicard stt={index + 1} ten={detai.tendetai} hocky={detai.hocky} trangthai = {detai.trangthai} />
-                                </Link>
+                                
+                                    <Detaicard_xetduyet key={detai._id} id={detai._id} stt={index + 1} ten={detai.tendetai} hocky={detai.hocky} trangthai = {detai.trangthai} />
+                               
                             );
                         })}
                     </div>
@@ -50,4 +48,4 @@ function Danhsachdetai(props) {
     );
 }
 
-export default Danhsachdetai;
+export default Danhsachdetai_xetduyet;
