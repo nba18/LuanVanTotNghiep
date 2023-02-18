@@ -16,7 +16,8 @@ const detai = mongoose.Schema(
         },
         sinhvien: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Sinhvien'
+            ref: 'Sinhvien',
+            default: null
         },
         listsinhvien:[{
             type: mongoose.Schema.Types.ObjectId,
@@ -68,7 +69,7 @@ const detai = mongoose.Schema(
                 type: String,
                 default: null
             }}
-        ]
+        ],
     },
     { timestamps: true }
 );
