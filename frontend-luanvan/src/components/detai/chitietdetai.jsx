@@ -17,6 +17,15 @@ function Chitietdetai(props) {
         const temp = await detaiAPI.yeucauchinhsua({id:match.params.id})
         navigate('/duyetdetai')
     }
+    const chondetai = async() => {
+        const data = {
+            "iddetai": match.params.id,
+            "idsinhvien": localStorage.getItem('id')
+
+        }
+        await detaiAPI.chondetai(data)
+        window.alert('chon thanh cong')
+    }
     return (
         <div>
             <div className="bg-[#2A84EB] rounded-lg h-10 w-[73rem] p-2 m-auto translate-y-6 shadow-lg shadow-blue-500/50 text-center text-white font-bold" >Chi tiết đề tài</div>
@@ -56,6 +65,10 @@ function Chitietdetai(props) {
                 {localStorage.getItem('phanquyen') == 2 ? <div className="flex justify-center">
                     <div className="mr-3 mb-5"><Button variant="contained" onClick={duyet}>Duyệt</Button></div>
                     <div className="ml-3 mb-5"><Button variant="contained" onClick={chinhsua}>Yêu cầu chỉnh sửa</Button></div>
+                </div> :<></>}
+                {localStorage.getItem('phanquyen') == 4 ? <div className="text-center justify-center">
+                <div className="text-red-600 text-lg pb-5" >Lưu ý: Chỉ được chọn một lần không thể thay đổi- Đề tài khi chọn sẻ có thứ tự ưu tiên - Đề tài chọn trước sẻ có độ ưu tiên hơn đề tài chọn sau.</div>
+                    <div className="pb-5"><Button variant="contained" onClick={chondetai}>Chọn đề tài</Button></div>          
                 </div> :<></>}
             </div>
         </div>

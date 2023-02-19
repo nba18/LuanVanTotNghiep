@@ -26,6 +26,10 @@ const sinhvien = mongoose.Schema(
         danhandetai: {
             type: Boolean,
             default: false
+        },
+        sodetaiduocchon:{
+            type: Number,
+            default: 4
         }
 
         

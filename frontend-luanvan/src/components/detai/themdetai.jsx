@@ -12,6 +12,7 @@ function Themdetai() {
     const [value4, setValue4] = useState('');
     const [value5, setValue5] = useState('');
     const [value6, setValue6] = useState('');
+    const [value7, setValue7] = useState('');
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data) => {
         data.tendetai = value1;
@@ -20,6 +21,7 @@ function Themdetai() {
         data.mota_yeucau = value4;
         data.mota_tailieu = value5;
         data.mota_khac = value6;
+        data.tukhoa = value7;
         console.log(data);
         let detai = { ...data, giangvien: id_nguoidung };
         const tempt = await detaiAPI.themdetai(detai);
@@ -50,19 +52,19 @@ function Themdetai() {
                                 <ReactQuill theme="snow" value={value1} onChange={setValue1} className="w-[1000px] m-auto mt-2" />
                             </div>
                             <div className="pt-2 h-[230px]">
-                                <div className="font-bold ml-10">2. Mô tả kiến thức</div>
+                                <div className="font-bold ml-10">2. Yêu cầu kiến thức</div>
                                 <ReactQuill theme="snow" value={value2} onChange={setValue2} className="w-[1000px] h-[150px] m-auto mt-2 " />
                             </div>
                             <div className="pt-2 h-[230px]">
-                                <div className="font-bold ml-10">3. Mô tả giới thiệu</div>
+                                <div className="font-bold ml-10">3. Giới thiệu</div>
                                 <ReactQuill theme="snow" value={value3} onChange={setValue3} className="w-[1000px] h-[150px] m-auto mt-2" />
                             </div>
                             <div className="pt-2 h-[230px]">
-                                <div className="font-bold ml-10">4. Mô tả yêu cầu</div>
+                                <div className="font-bold ml-10">4. Mục tiêu và yêu cầu chức năng</div>
                                 <ReactQuill theme="snow" value={value4} onChange={setValue4} className="w-[1000px] h-[150px] m-auto mt-2" />
                             </div>
                             <div className="pt-2 h-[230px]">
-                                <div className="font-bold ml-10">5. Mô tả tài liệu</div>
+                                <div className="font-bold ml-10">5. Tài liệu tham khảo</div>
                                 <ReactQuill theme="snow" value={value5} onChange={setValue5} className="w-[1000px] h-[150px] m-auto mt-2" />
                             </div>
                             <div className="pt-2 h-[230px]">
@@ -70,7 +72,7 @@ function Themdetai() {
                                 <ReactQuill theme="snow" value={value6} onChange={setValue6} className="w-[1000px] h-[150px] m-auto mt-2" />
                             </div>
                             <div className="pt-2">
-                                <div className="font-bold ml-10">7.Niên khóa</div>
+                                <div className="font-bold ml-10">7. Niên khóa</div>
                                 <div className="w-[1000px] m-auto mt-2">
                                     <select id="hocky" type='select'   {...register('hocky', { required: true })} className="">
                                         {hockyList?.map(hocky => {
@@ -81,7 +83,11 @@ function Themdetai() {
                                     </select>
                                 </div>
                             </div>
-                            <div className="text-center pt-5 pb-5 w-full"><Button type='submit' variant="contained" className="w-[1000px]" >Thêm</Button></div>
+                            <div className="pt-2">
+                                <div className="font-bold ml-10">8. Từ khóa</div>
+                                <ReactQuill theme="snow" value={value7} onChange={setValue7} className="w-[1000px] h-[100px] m-auto mt-2" />
+                            </div>
+                            <div className="text-center mt-10 pt-5 pb-5 w-full"><Button type='submit' variant="contained" className="w-[1000px]" >Thêm</Button></div>
                         </form>
                     </div>
                 </div>

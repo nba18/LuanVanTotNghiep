@@ -46,6 +46,11 @@ function Dashboard() {
                         <div className="p-[5px]"><HiOutlineDocumentText /></div>Danh sách đề tài tổng hợp
                     </div>
                 </Link>
+                <Link to="/detaicongbo">
+                    <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg mt-1 text-xl cursor-default">
+                        <div className="p-[5px]"><HiOutlineDocumentText /></div>Danh sách đề tài luận văn
+                    </div>
+                </Link>
                 <Link to='/hoso'>
                     <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
                         <div className="p-[5px]"><RiAccountCircleLine /></div>Thông tin cá nhân

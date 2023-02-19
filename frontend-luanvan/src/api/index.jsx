@@ -43,6 +43,9 @@ export const detaiAPI = {
     laydsdetaichuaduyet: () => {
         return callApi('get', `/truongkhoa/laydsdetaichuaduyet`,null);
     },
+    laydsdetaidaduyet: () => {
+        return callApi('get', `/laydsdetaidaduyet`,null);
+    },
     lay1detai: (id) => {
         return callApi('get', `/giangvien/lay1detai/${id}`, null);
     },
@@ -55,6 +58,9 @@ export const detaiAPI = {
     capnhatdetai: (id,data) => {
         return callApi('put', `/giangvien/capnhat/${id}`, data);
     },
+    chondetai: (data) => {
+        return callApi('put',`/chondetai`,data);
+    }
 
 }
 export const nguoidungAPI = {

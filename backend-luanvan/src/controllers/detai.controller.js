@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Detai = require("../models/detai.model");
 const giangvienModel = require("../models/giangvien.model");
 const Hocky = require("../models/hocky.model");
+const sinhvienModel = require("../models/sinhvien.model");
 const detaiController = {
     themDetai: async (req, res) => {
         try {
@@ -14,6 +15,7 @@ const detaiController = {
                 mota_yeucau: req.body.mota_yeucau,
                 mota_tailieu: req.body.mota_tailieu,
                 mota_khac: req.body.mota_khac,
+                tukhoa: req.body.tukhoa
             });
             const detai = await newDetai.save();
             // console.log(detai);
@@ -38,86 +40,108 @@ const detaiController = {
             res.status(500).json(err);
         }
     },
-    layDetai: async(req,res)=>{
-        
-        const detai = await Detai.find().populate( { path: 'hocky'} )
+    layDetai: async (req, res) => {
+        const detai = await Detai.find().populate({ path: 'hocky' })
         if (!detai) {
             return res.status(403).json("Rỗng")
         }
         return res.status(200).json(detai)
-
     },
     //Ds de tai cua gv
-    laydsdetai: async(req, res) => {
+    laydsdetai: async (req, res) => {
         // console.log(req.params.id);
-        try{
+        try {
             const gv = await giangvienModel.findById(req.params.id).populate({ path: 'danhsachdetai_dexuat', populate: { path: 'hocky' } })
             // console.log(gv.danhsachdetai_dexuat);
             res.status(200).json(gv.danhsachdetai_dexuat);
-        }catch(err){
+        } catch (err) {
             res.status(500).json(err);
         }
     },
     //lay danh sach de tai chua duyet
-    laydsdetaichuaduyet: async(req, res) => {
-        try{
-            const detai = await Detai.find({trangthai:1}).populate({ path: 'hocky'})
+    laydsdetaichuaduyet: async (req, res) => {
+        try {
+            const detai = await Detai.find({ trangthai: 1 }).populate({ path: 'hocky' })
             // console.log(gv.danhsachdetai_dexuat);
             res.status(200).json(detai);
-        }catch(err){
+        } catch (err) {
             res.status(500).json(err);
         }
     },
-    laydsdetaidaduyet: async(req, res) => {
-        try{
-            const detai = await Detai.find({trangthai:2}).populate({ path: 'hocky'})
+    laydsdetaidaduyet: async (req, res) => {
+        try {
+            const detai = await Detai.find({ trangthai: 2 }).populate({ path: 'hocky' })
             // console.log(gv.danhsachdetai_dexuat);
             res.status(200).json(detai);
-        }catch(err){
+        } catch (err) {
             res.status(500).json(err);
         }
     },
     //lay 1 de tai
-    lay1detai: async(req,res)=>{
+    lay1detai: async (req, res) => {
         // console.log(req.params.id);
-        try{
-            const detai = await Detai.findById(req.params.id).populate({ path: 'hocky'})
+        try {
+            const detai = await Detai.findById(req.params.id).populate({ path: 'hocky' })
             res.status(200).json(detai);
-        }catch(err){
+        } catch (err) {
             res.status(500).json(err);
         }
     },
-     //duyet de tai 
-     duyetdetai: async(req,res)=>{
-        try{
-            const detai = await Detai.findByIdAndUpdate(req.body.id ,
-            {
-                trangthai: 2,
-            });
-            return res.status(200).json(detai);
-        }catch(err){
-            return res.status(500).json(err);
-        }
-    },
-    yeucauchinhsua: async(req,res)=>{
-        // console.log(req.params.id);
-        try{
+    //duyet de tai 
+    duyetdetai: async (req, res) => {
+        try {
             const detai = await Detai.findByIdAndUpdate(req.body.id,
-            {
-                trangthai: 3,
-            });
+                {
+                    trangthai: 2,
+                });
             return res.status(200).json(detai);
-        }catch(err){
+        } catch (err) {
             return res.status(500).json(err);
         }
     },
-    capnhatdetai: async(req, res) => {
-        try{
-            console.log("id",req.params.id,req.body);
+    yeucauchinhsua: async (req, res) => {
+        // console.log(req.params.id);
+        try {
+            const detai = await Detai.findByIdAndUpdate(req.body.id,
+                {
+                    trangthai: 3,
+                });
+            return res.status(200).json(detai);
+        } catch (err) {
+            return res.status(500).json(err);
+        }
+    },
+    chondetai: async (req, res) => {
+        try {
+            const detai = await Detai.findById(req.body.iddetai);
+            const sinhvien = await sinhvienModel.findById(req.body.idsinhvien)
+            if (sinhvien.sodetaiduocchon > 0) {
+                const sinhvien1 = await sinhvienModel.findByIdAndUpdate(req.body.idsinhvien, {
+                    $push: {
+                        danhsachdetai_muonlam: req.body.iddetai
+                    },
+                    sodetaiduocchon: sinhvien.sodetaiduocchon - 1,
+                })
+                if (detai.sinhvien == null && sinhvien.danhandetai == false) {
+                    await Detai.findByIdAndUpdate(req.body.iddetai, {
+                        sinhvien: req.body.idsinhvien
+                    });
+                }
+                return res.status(200).json(sinhvien1);
+            }
+        } catch (err) {
+            return res.status(500).json(err);
+        }
+    },
+    capnhatdetai: async (req, res) => {
+        try {
+            console.log("id", req.params.id, req.body);
             const updateData = req.body;
-            await Detai.findByIdAndUpdate(req.params.id,updateData);
+            await Detai.findByIdAndUpdate(req.params.id, updateData);
             return res.status(200).json('Cập nhật thành công');
-        }catch(err){
+        } catch (err) {
             res.status(500).json(err);
-        }}}
+        }
+    }
+}
 module.exports = detaiController;
