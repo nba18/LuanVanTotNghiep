@@ -16,12 +16,9 @@ const detai = mongoose.Schema(
         },
         sinhvien: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Sinhvien'
+            ref: 'Sinhvien',
+            default: null
         },
-        listsinhvien:[{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Sinhvien'
-        }],
         hocky: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Hocky'

@@ -68,6 +68,15 @@ const detaiController = {
             res.status(500).json(err);
         }
     },
+    laydsdetaidaduyet: async(req, res) => {
+        try{
+            const detai = await Detai.find({trangthai:2}).populate({ path: 'hocky'})
+            // console.log(gv.danhsachdetai_dexuat);
+            res.status(200).json(detai);
+        }catch(err){
+            res.status(500).json(err);
+        }
+    },
     //lay 1 de tai
     lay1detai: async(req,res)=>{
         // console.log(req.params.id);

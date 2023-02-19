@@ -53,9 +53,9 @@ function Chitietdetai(props) {
                     <div className='font-bold'>5. Yêu cầu khác</div>
                     <Markup content={mota_khac} />
                 </div>
-                {localStorage.getItem('phanquyen') == 1 ? <div className="flex justify-center">
-                    <div className="mr-3"><Button variant="contained" onClick={duyet}>Duyệt</Button></div>
-                    <div className="ml-3"><Button variant="contained" onClick={chinhsua}>Yêu cầu chỉnh sửa</Button></div>
+                {localStorage.getItem('phanquyen') == 2 ? <div className="flex justify-center">
+                    <div className="mr-3 mb-5"><Button variant="contained" onClick={duyet}>Duyệt</Button></div>
+                    <div className="ml-3 mb-5"><Button variant="contained" onClick={chinhsua}>Yêu cầu chỉnh sửa</Button></div>
                 </div> :<></>}
             </div>
         </div>
