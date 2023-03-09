@@ -20,7 +20,7 @@ const hocky = mongoose.Schema(
             default: []
 
         }],
-
+        
         trangthai: {
             type: Boolean,
             default: true,

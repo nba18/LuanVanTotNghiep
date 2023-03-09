@@ -8,6 +8,7 @@ const Sinhvien = require("../models/sinhvien.model");
 const Giangvien = require("../models/giangvien.model");
 const Truongkhoa = require("../models/truongkhoa.model");
 const Quantrivien = require("../models/quantrivien.model");
+const detaiModel = require("../models/detai.model");
 
 
 const accountController = {
@@ -76,9 +77,9 @@ const accountController = {
         }
         if (account.taikhoan && isPassword) {
             if (account.phanloai == 3) {
-                console.log(account.id_nguoidung)
+
                 const giangvien = await Giangvien.findById(account.id_nguoidung)
-                console.log("xin chao")
+
                 return res.status(200).json(giangvien)
             } else {
                 if (account.phanloai == 4) {
@@ -98,6 +99,34 @@ const accountController = {
             }
         }
         return res.status(500).json(err)
+    },
+    danhsachdetai_muonlam: async (req, res) => {
+
+        try {
+            
+            const data = []
+            const sinhvien = await Sinhvien.findById(req.params.id)
+            sinhvien.danhsachdetai_muonlam.sort(function(a, b){return a.thutu - b.thutu})
+            sinhvien.danhsachdetai_muonlam.forEach(element => {
+                let detai = detaiModel.findById(element.iddetai)
+                data.push(detai.tendetai)
+            })
+            res.status(200).json(sinhvien);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+    dssinhvien: async (req, res) => {
+        try {
+            const sinhvien = await Sinhvien.find().populate()
+            sinhvien.forEach(element => {
+                element.danhsachdetai_muonlam.sort(function(a, b){return a.thutu - b.thutu})
+            });
+            res.status(200).json(sinhvien);
+        }
+        catch (err) {
+            res.status(500).json(err)
+        }
     },
     // lay tat ca gv
     laygiangvien: async(req,res)=>{

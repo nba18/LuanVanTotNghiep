@@ -2,9 +2,15 @@ const mongoose = require("mongoose");
 
 const truongkhoa = mongoose.Schema(
     {
-        msnd: {
+        msgv: {
             type: String,
-        }, 
+        },
+        hoten: {
+            type: String,
+        },
+        email: {
+            type: String,
+        },
         phanloai: {
             type: Number,
             default: '2',

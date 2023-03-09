@@ -48,6 +48,10 @@ const detai = mongoose.Schema(
             type: String,
             //Mô tả khác.
         },
+        tukhoa:{
+            type: String,
+            //keyword
+        },
         trangthai: {
             type: Number,
             default: 1,

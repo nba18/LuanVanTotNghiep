@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useMatch } from 'react-router-dom';
+
 import { detaiAPI } from '../api';
 import Dashboard from '../components/dashboard';
 import Chitietdetai from '../components/detai/chitietdetai';
@@ -25,7 +26,7 @@ function Dsdetaicanhan_page(props) {
                 <Dashboard />
             </div>
             <div className="w-full h-full ">
-                <Chitietdetai tendetai={detai.tendetai} tentienganh={detai.tentienganh} mota_kienthuc={detai.mota_kienthuc} mota_gioithieu={detai.mota_gioithieu} mota_yeucau={detai.mota_yeucau} mota_tailieu={detai.mota_tailieu} mota_khac={detai.mota_khac}  />
+                <Chitietdetai detai = {detai} />
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import Dashboard from "../components/dashboard";
+import Hosocanhan from "../components/hosocanhan";
 
 function Hosocanhan_page(){
     return(
@@ -8,7 +9,7 @@ function Hosocanhan_page(){
                 <Dashboard />
             </div>
             <div className="w-full h-full">
-
+                <Hosocanhan />
             </div>  
         </div>
     );
