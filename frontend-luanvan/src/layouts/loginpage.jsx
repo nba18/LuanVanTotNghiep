@@ -13,6 +13,7 @@ function Loginpage() {
         localStorage.setItem("hoten", temp.data.hoten)
         localStorage.setItem("email", temp.data.email)
         localStorage.setItem("id", temp.data._id)
+        localStorage.setItem("danhsachdetai",temp.data.danhsachdetai_muonlam)
         if (temp.data.phanloai = 4) {
             localStorage.setItem("mssv", temp.data.mssv)
             navigate('/hocky')

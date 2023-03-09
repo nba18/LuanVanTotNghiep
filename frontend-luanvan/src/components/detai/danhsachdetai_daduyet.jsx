@@ -13,8 +13,7 @@ function Danhsachdetai_daduyet(props) {
     const [list, setDetaiList] = useState([]);
     const fetchDetai = async () => {
         const List = await detaiAPI.laydsdetaidaduyet();
-        setDetaiList(List.data);
-        
+        setDetaiList(List.data); 
     };
     useEffect(() => {
         fetchDetai();

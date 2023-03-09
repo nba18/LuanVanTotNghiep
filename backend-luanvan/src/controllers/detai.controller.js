@@ -3,6 +3,8 @@ const Detai = require("../models/detai.model");
 const giangvienModel = require("../models/giangvien.model");
 const Hocky = require("../models/hocky.model");
 const sinhvienModel = require("../models/sinhvien.model");
+const luanvanModel = require("../models/luanvan.model")
+
 const detaiController = {
     themDetai: async (req, res) => {
         try {
@@ -81,7 +83,7 @@ const detaiController = {
     lay1detai: async (req, res) => {
         // console.log(req.params.id);
         try {
-            const detai = await Detai.findById(req.params.id).populate({ path: 'hocky' })
+            const detai = await Detai.findById(req.params.id).populate({ path: 'hocky' }).populate({path: 'giangvien'})
             res.status(200).json(detai);
         } catch (err) {
             res.status(500).json(err);
@@ -112,22 +114,40 @@ const detaiController = {
         }
     },
     chondetai: async (req, res) => {
+        // try {
+        //     const sinhvien1 = await sinhvienModel.findByIdAndUpdate(req.body[1].idsinhvien, {
+        //             $push: {
+        //                 danhsachdetai_muonlam: req.body[0]
+        //             }    
+        //     })
+        //     console.log(sinhvien1)
+        //     return res.status(200).json(sinhvien1);
+        // } catch (err) {
+        //     return res.status(500).json(err);
+        // }
         try {
-            const detai = await Detai.findById(req.body.iddetai);
-            const sinhvien = await sinhvienModel.findById(req.body.idsinhvien)
-            if (sinhvien.sodetaiduocchon > 0) {
-                const sinhvien1 = await sinhvienModel.findByIdAndUpdate(req.body.idsinhvien, {
-                    $push: {
-                        danhsachdetai_muonlam: req.body.iddetai
-                    },
-                    sodetaiduocchon: sinhvien.sodetaiduocchon - 1,
-                })
-                if (detai.sinhvien == null && sinhvien.danhandetai == false) {
-                    await Detai.findByIdAndUpdate(req.body.iddetai, {
-                        sinhvien: req.body.idsinhvien
-                    });
+            const sinhvien1 = await sinhvienModel.findById(req.body[1].idsinhvien)
+            let check = true;
+            if(sinhvien1.sodetaiduocchon <= 0){
+                check = false
+            }
+            sinhvien1.danhsachdetai_muonlam.forEach(element => {
+                if (element.thutu == req.body[0].thutu) {
+                    check = false
                 }
-                return res.status(200).json(sinhvien1);
+            });
+            if (check) {
+
+
+                const sinhvien2 = await sinhvienModel.findByIdAndUpdate(req.body[1].idsinhvien, {
+                    $push: {
+                        danhsachdetai_muonlam: req.body[0]
+                    },
+                    sodetaiduocchon: sinhvien1.sodetaiduocchon - 1
+                })
+                sinhvien2.danhsachdetai_muonlam.sort(function(a, b){return a.thutu - b.thutu})
+                
+                res.status(200).json(sinhvien2);
             }
         } catch (err) {
             return res.status(500).json(err);
@@ -135,13 +155,42 @@ const detaiController = {
     },
     capnhatdetai: async (req, res) => {
         try {
-            console.log("id", req.params.id, req.body);
+            
             const updateData = req.body;
             await Detai.findByIdAndUpdate(req.params.id, updateData);
             return res.status(200).json('Cập nhật thành công');
         } catch (err) {
             res.status(500).json(err);
         }
-    }
+    },
+    phancongdetai: async (req, res) => {
+        try {
+            const luanvan = await luanvanModel.findOne({ mssv: req.body.mssv })
+            if(!luanvan){
+                const newluanvan = new luanvanModel({
+                    tenluanvantiengviet: req.body.tendetai,
+                    giangvien: req.body.tengiangvien,
+                    hocky: req.body.hocky,
+                    sinhvien: req.body.tensinhvien,
+                    mssv: req.body.mssv,
+                });
+                await newluanvan.save();
+                await sinhvienModel.findByIdAndUpdate(req.body.idsv,{
+                    tenluanvantiengviet : req.body.tendetai,
+                })
+                
+            } else {
+                await luanvanModel.findOneAndUpdate({mssv:req.body.mssv},{
+                    tenluanvantiengviet: req.body.tendetai
+                })
+                await sinhvienModel.findByIdAndUpdate(req.body.idsv,{
+                    tenluanvantiengviet : req.body.tendetai,
+                })
+            }
+            res.status(200)
+        } catch (err) {
+            res.status(500).json(err)
+        }
+    },
 }
 module.exports = detaiController;

@@ -60,6 +60,9 @@ export const detaiAPI = {
     },
     chondetai: (data) => {
         return callApi('put',`/chondetai`,data);
+    },
+    phancongdetai: (data) => {
+        return callApi('post',`/truongkhoa/phancong`,data)
     }
 
 }
@@ -69,6 +72,12 @@ export const nguoidungAPI = {
     },
     dangnhap: (data) => {
         return callApi('post', `/dangnhap`, data);
+    },
+    danhsachdetai_muonlam: (id) => {
+        return callApi('get',`/laydanhsachdetaimuonlam/${id}`,id)
+    },
+    sinhvien: () => {
+        return callApi('get',`/sinhvien`,null)
     }
 }
 

@@ -19,10 +19,25 @@ const sinhvien = mongoose.Schema(
             //3: giảng viên
             //4: sinh viên
         },
-        danhsachdetai_muonlam: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Detai'
-        }],
+        danhsachdetai_muonlam:[
+            {
+            tendetai: {
+                type: String,
+            },
+            tengiangvien: {
+                type: String,
+            },
+            hocky: {
+                type: String,
+            },
+            thutu:{
+                type: Number,
+            },
+            iddetai: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Detai'
+            },}
+        ],
         danhandetai: {
             type: Boolean,
             default: false
@@ -30,8 +45,17 @@ const sinhvien = mongoose.Schema(
         sodetaiduocchon:{
             type: Number,
             default: 4
-        }
-
+        },
+        tenluanvantiengviet: {
+            type: String,
+        },
+        tenluanvantienganh: {
+            type: String,
+        },
+        diemluanvan: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Diem'
+        },     
         
     },
     {timestamps: true}

@@ -14,11 +14,6 @@ const detai = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Giangvien'
         },
-        sinhvien: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Sinhvien',
-            default: null
-        },
         hocky: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Hocky'

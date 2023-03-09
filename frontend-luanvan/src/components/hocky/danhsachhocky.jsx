@@ -13,7 +13,6 @@ function DShocky() {
 
     const fetchHocky = async () => {
         const List = await hockyAPI.layhocky();
-        console.log(List.data)
         sethockyList(List.data);
         
     };
