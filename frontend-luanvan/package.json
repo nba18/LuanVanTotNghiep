@@ -8,6 +8,7 @@
     "@emailjs/browser": "^3.10.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@hookform/resolvers": "^2.9.11",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.3",
     "@testing-library/jest-dom": "^5.16.5",
@@ -18,9 +19,10 @@
     "generate-password": "^1.7.0",
     "html-react-parser": "^3.0.9",
     "interweave": "^13.0.0",
+    "notistack": "^2.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.41.5",
+    "react-hook-form": "^7.43.1",
     "react-icons": "^4.7.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.6.1",
@@ -28,7 +30,8 @@
     "react-select": "^5.7.0",
     "suneditor": "^2.44.3",
     "suneditor-react": "^3.4.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

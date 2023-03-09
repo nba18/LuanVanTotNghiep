@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { detaiAPI } from '../../api';
-import Detaicard_xetduyet from './detaicard_xetduyet';
+import Detaicardxetduyet from './detaicard_xetduyet';
 // import PropTypes from 'prop-types';
 
-Danhsachdetai_xetduyet.propTypes = {
+Danhsachdetaixetduyet.propTypes = {
     
 };
 
-function Danhsachdetai_xetduyet(props) {
+function Danhsachdetaixetduyet(props) {
 
     const [list, setDetaiList] = useState([]);
     const fetchDetai = async () => {
@@ -36,7 +35,7 @@ function Danhsachdetai_xetduyet(props) {
                         {list.map((detai, index) => {
                             return (
                                 
-                                    <Detaicard_xetduyet key={detai._id} id={detai._id} stt={index + 1} ten={detai.tendetai} hocky={detai.hocky} trangthai = {detai.trangthai} />
+                                    <Detaicardxetduyet key={detai._id} id={detai._id} stt={index + 1} ten={detai.tendetai} hocky={detai.hocky} trangthai = {detai.trangthai} />
                                
                             );
                         })}
@@ -48,4 +47,4 @@ function Danhsachdetai_xetduyet(props) {
     );
 }
 
-export default Danhsachdetai_xetduyet;
+export default Danhsachdetaixetduyet;

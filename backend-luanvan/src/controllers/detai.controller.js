@@ -68,6 +68,23 @@ const detaiController = {
             res.status(500).json(err);
         }
     },
+    //lay danh sach de tai tong hop
+    laydsdetatonghop: async(req, res) => {
+        try{
+            const detai = await Detai.find().populate({ path: 'sinhvien'}).populate({ path: 'giangvien'})
+            const data = []
+            
+            detai.map(dt =>{
+                if (dt.sinhvien !== null){
+                    data.push(dt)
+                }
+            })
+            // console.log(data)
+            res.status(200).json(data);
+        }catch(err){
+            res.status(500).json(err);
+        }
+    },
     //lay 1 de tai
     lay1detai: async(req,res)=>{
         // console.log(req.params.id);
@@ -104,11 +121,40 @@ const detaiController = {
     },
     capnhatdetai: async(req, res) => {
         try{
-            console.log("id",req.params.id,req.body);
-            const updateData = req.body;
-            await Detai.findByIdAndUpdate(req.params.id,updateData);
+            if(req.body.check === false){
+                const detai = await Detai.findByIdAndUpdate(req.body.id,
+                    {
+                        tendetai: req.body.tendetai,
+                        tentienganh: req.body.tentienganh,
+                        sinhvien: null                        
+                    });
+            }else{
+                const detai = await Detai.findByIdAndUpdate(req.body.id,
+                    {
+                        tendetai: req.body.tendetai,
+                        tentienganh: req.body.tentienganh,                     
+                    });
+            }
+
             return res.status(200).json('Cập nhật thành công');
         }catch(err){
             res.status(500).json(err);
-        }}}
+        }},
+        capnhathoidong: async(req, res) => {
+            // console.log( req.body.hoidong);
+            try{
+                const detai = await Detai.findByIdAndUpdate(req.body.detai,
+                    {
+                        hoidong: req.body.hoidong,
+                        thoigianbaove: req.body.thoigianbaove,
+                                             
+                    });
+                
+                // console.log(detai)
+                return res.status(200).json('Cập nhật thành công');
+            }catch(err){
+                res.status(500).json(err);
+            }}
+    }
+
 module.exports = detaiController;

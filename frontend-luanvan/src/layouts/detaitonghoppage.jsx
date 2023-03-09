@@ -1,7 +1,7 @@
 import React from "react";
 import Dashboard from "../components/dashboard";
 import Danhsachtonghop from "../components/detai/danhsachtonghop";
-import Themdetai from "../components/detai/themdetai";
+// import Themdetai from "../components/detai/themdetai";
 
 function Detaitonghoppage(){
     return(

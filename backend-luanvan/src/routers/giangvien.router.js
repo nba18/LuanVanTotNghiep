@@ -6,8 +6,10 @@ router.post('/themdetai', detaicontroller.themDetai);
 router.get('/laydetai', detaicontroller.layDetai);
 //lay de tai de xuat
 router.get('/laydsdetai/:id', detaicontroller.laydsdetai);
+//laydetaitonghop
+router.get('/laydetaitonghop', detaicontroller.laydsdetatonghop);
 //lay 1 de tai 
 router.get('/lay1detai/:id', detaicontroller.lay1detai);
-router.put('/capnhat/:id', detaicontroller.capnhatdetai);
+router.put('/capnhatdetai/', detaicontroller.capnhatdetai);
 
 module.exports = router;

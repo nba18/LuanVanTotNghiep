@@ -27,8 +27,17 @@ const sinhvien = mongoose.Schema(
             type: Boolean,
             default: false
         }
-
-        
+        ,
+        tenluanvantiengviet: {
+            type: String,
+        },
+        tenluanvantienganh: {
+            type: String,
+        },
+        diemluanvan: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Diem'
+        },     
     },
     {timestamps: true}
 );

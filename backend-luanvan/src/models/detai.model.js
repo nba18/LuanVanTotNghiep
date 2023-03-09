@@ -56,18 +56,26 @@ const detai = mongoose.Schema(
             //Trạng thái 3: Yêu cầu chỉnh sữa.
             //Trạng thái 4: Đã khóa.
         },
-        giobaove:{
-            type: String,
-            default: null
-        },
+        thoigianbaove:
+            {ngaybaove:{
+                type: String,
+                default: ''
+            },
+            thutu:{
+                type: Number,
+                default: null
+            }
+
+            }
+        ,
         hoidong:[
             {giangvien: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Giangvien'
+                type: String,
+                default: ''
             },
             chucvu:{
                 type: String,
-                default: null
+                default: ''
             }}
         ],
     },

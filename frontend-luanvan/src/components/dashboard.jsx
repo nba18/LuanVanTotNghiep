@@ -4,7 +4,7 @@ import { HiOutlineDocumentText } from 'react-icons/hi';
 import { RiAccountCircleLine } from 'react-icons/ri';
 import { GrDocumentTime } from 'react-icons/gr';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button, linkClasses } from "@mui/material";
+import { Button } from "@mui/material";
 
 function Dashboard() {
     const navigate = useNavigate()
@@ -50,6 +50,11 @@ function Dashboard() {
                 <Link to="/detaitonghop">
                     <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
                         <div className="p-[5px]"><HiOutlineDocumentText /></div>Danh sách đề tài tổng hợp
+                    </div>
+                </Link>
+                <Link to="/nhapdiem">
+                    <div className="hover:bg-fuchsia-600 flex p-2 mx-3 rounded-lg h-12 mt-1 text-xl cursor-default">
+                        <div className="p-[5px]"><HiOutlineDocumentText /></div>Nhập điểm
                     </div>
                 </Link>
                 <div onClick={logout} className="w-full text-center absolute bottom-5">

@@ -98,7 +98,17 @@ const accountController = {
             }
         }
         return res.status(500).json(err)
-    }
+    },
+    // lay tat ca gv
+    laygiangvien: async(req,res)=>{
+        
+        const giangvien = await Giangvien.find()
+        if (!giangvien) {
+            return res.status(403).json("Rỗng")
+        }
+        return res.status(200).json(giangvien)
+
+    },
 }
 
 module.exports = accountController

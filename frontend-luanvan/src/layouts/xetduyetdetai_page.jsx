@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Dashboard from '../components/dashboard';
-import Danhsachdetai_xetduyet from '../components/detai/danhsachdetai_xetduyet';
+import Danhsachdetaixetduyet from '../components/detai/danhsachdetai_xetduyet';
 
 Xetduyetdetai_page.propTypes = {
 
@@ -13,7 +13,7 @@ function Xetduyetdetai_page(props) {
                 <Dashboard />
             </div>
             <div className="w-full h-full">
-                <Danhsachdetai_xetduyet />
+                <Danhsachdetaixetduyet />
             </div>  
         </div>
     );

@@ -13,7 +13,7 @@ function Danhsachdetai(props) {
     const [list, setDetaiList] = useState([]);
     const fetchDetai = async () => {
         const List = await detaiAPI.laydsdetai(localStorage.getItem("id"));
-        // console.log(List.data)
+        // console.log(localStorage.getItem("id"))
         setDetaiList(List.data);
         
     };

@@ -5,6 +5,7 @@ const { route } = require('./giangvien.router');
 
 router.post('/dangnhap', accountController.login);
 router.post('/dangky', accountController.register);
+router.get('/laygiangvien', accountController.laygiangvien);
 
 
 module.exports = router;

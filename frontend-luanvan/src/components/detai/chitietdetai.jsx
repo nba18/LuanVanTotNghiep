@@ -11,10 +11,12 @@ function Chitietdetai(props) {
     const match = useMatch('/detai/:id')
     const duyet = async() => {
         const temp = await detaiAPI.duyetdetai({id:match.params.id})
+        console.log(temp)
         navigate('/duyetdetai')
     }
     const chinhsua = async() => {
         const temp = await detaiAPI.yeucauchinhsua({id:match.params.id})
+        console.log(temp)
         navigate('/duyetdetai')
     }
     return (
