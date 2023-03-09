@@ -5,14 +5,14 @@ import { useSnackbar } from 'notistack';
 // import PropTypes from 'prop-types';
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { detaiAPI } from "../../../api";
+import { detaiAPI, luanvanAPI } from "../../../api";
 
 Capnhatdetaiform.propTypes = {};
 
 const schema = yup
   .object({
-    tendetai: yup.string().required("Vui lòng không để trống tên đề tài!"),
-    tentienganh: yup.string().required("Vui lòng không để trống tên đề tài!"),
+    tenluanvantiengviet: yup.string().required("Vui lòng không để trống tên đề tài!"),
+    tenluanvantienganh: yup.string().required("Vui lòng không để trống tên đề tài!"),
   })
   .required();
 
@@ -24,14 +24,14 @@ function Capnhatdetaiform(props) {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
   const { detai, close, fetch} = props;
-  detai.tendetai = detai.tendetai.replace(/<\/?[^>]+(>|$)/g, "");
-  detai.tentienganh = detai.tentienganh.replace(/<\/?[^>]+(>|$)/g, "");
+  detai.tenluanvantiengviet = detai.tenluanvantiengviet.replace(/<\/?[^>]+(>|$)/g, "");
+  detai.tenluanvantienganh = detai.tenluanvantienganh.replace(/<\/?[^>]+(>|$)/g, "");
 
   const [chon, SetChon] = useState(true);
   const onSubmit = async (data) => {
     let dt = { ...data, check: chon , id:detai._id};
     console.log(dt);
-    const temp = detaiAPI.capnhatdetai(dt);
+    const temp = luanvanAPI.capnhatluanvan(dt);
     console.log(temp);
     enqueueSnackbar('Cập nhật thành công', {variant: 'success'});
     close()
@@ -53,25 +53,25 @@ function Capnhatdetaiform(props) {
             <div className="p-4 w-2/5">
               <textarea
                 className="block w-full border-solid border-black border-b-2 focus:border-none"
-                {...register("tendetai", { required: true })}
+                {...register("tenluanvantiengviet", { required: true })}
                 // onChange={setTenta}
 
-                defaultValue={detai.tendetai}
+                defaultValue={detai.tenluanvantiengviet}
               ></textarea>
               <div className="text-red-500 text-sm">
-                {errors.tendetai?.message}
+                {errors.tenluanvantiengviet?.message}
               </div>
             </div>
             <div className="p-4 w-2/5">
               <textarea
                 className="block w-full border-solid border-black border-b-2 focus:border-none"
-                {...register("tentienganh", { required: true })}
+                {...register("tenluanvantienganh", { required: true })}
                 // onChange={setTenta}
 
-                defaultValue={detai.tentienganh}
+                defaultValue={detai.tenluanvantienganh}
               ></textarea>
               <div className="text-red-500 text-sm">
-                {errors.tentienganh?.message}
+                {errors.tenluanvantienganh?.message}
               </div>
             </div>
             <div className="p-4 w-1/5 text-center">

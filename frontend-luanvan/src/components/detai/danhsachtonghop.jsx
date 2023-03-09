@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 
 // import PropTypes from 'prop-types';
 import { utils, writeFileXLSX } from "xlsx";
-import { detaiAPI } from "../../api";
+import { detaiAPI, luanvanAPI } from "../../api";
 import Capnhatdetaiform from "./forms/capnhatdetai_form";
 import CapnhathoidongForm from "./forms/capnhatdoidong_form";
 
@@ -50,13 +50,13 @@ function Danhsachtonghop(props) {
   const [list, setDetaiList] = useState([]);
   // console.log(localStorage.getItem("phanquyen"));
   const fetchDetai = async () => {
-    const List = await detaiAPI.laydetaitonghop();
+    const List = await luanvanAPI.laydsluanvan();
     // console.log(List.data);
     setDetaiList(List.data);
   };
   useEffect(() => {
     fetchDetai();
-  }, []);
+  }, [list]);
 
   const handle = () => {
     // console.log
@@ -65,20 +65,22 @@ function Danhsachtonghop(props) {
       data[0] = index + 1;
       for (let key in x) {
         switch (key) {
-          case "sinhvien":
-            data[1] = x[key].mssv;
-            data[2] = x[key].hoten;
+          case "mssv":
+            data[1] = x[key];
             break;
-          case "tendetai":
+          case "sinhvien":
+            data[2] = x[key];
+            break;
+          case "tenluanvantiengviet":
             let cleanText = x[key].replace(/<\/?[^>]+(>|$)/g, "");
             data[3] = cleanText;
             break;
-          case "tentienganh":
+          case "tenluanvantienganh":
             let text = x[key].replace(/<\/?[^>]+(>|$)/g, "");
             data[4] = text;
             break;
           case "giangvien":
-            data[5] = x[key].hoten;
+            data[5] = x[key];
             break;
           case "thoigianbaove":
             if (x[key].ngaybaove !== "") {
@@ -192,15 +194,15 @@ function Danhsachtonghop(props) {
           <tbody>
             {/* <tr> */}
             {list.map((detai, index) => {
-              let tendetai = detai.tendetai.replace(/<\/?[^>]+(>|$)/g, "");
+              let tendetai = detai.tenluanvantiengviet.replace(/<\/?[^>]+(>|$)/g, "");
               return (
                 <tr className="my-2" key={detai._id}>
                   <td className="p-2 text-center">{index + 1}</td>
-                  <td className="p-2">{detai.sinhvien.mssv}</td>
-                  <td className="p-2">{detai.sinhvien.hoten}</td>
+                  <td className="p-2">{detai.mssv}</td>
+                  <td className="p-2">{detai.sinhvien}</td>
                   <td className="p-2">{tendetai}</td>
-                  <td className="p-2">{detai.tentienganh}</td>
-                  <td className="text-center p-2">{detai.giangvien.hoten}</td>
+                  <td className="p-2">{detai.tenluanvantienganh}</td>
+                  <td className="text-center p-2">{detai.giangvien}</td>
                   <td className="p-2">
                     <div>{detai.thoigianbaove.ngaybaove}</div>
                     <div className="text-center">
@@ -215,7 +217,7 @@ function Danhsachtonghop(props) {
                     </td>
                   )}
                   {!detai.hoidong[0]?.giangvien && <td className="p-2"></td>}
-                  {localStorage.getItem("id") === detai.giangvien._id && (
+                  {localStorage.getItem("hoten") === detai.giangvien && (
                     <td className="text-center">
                       <ModeIcon
                         sx={{

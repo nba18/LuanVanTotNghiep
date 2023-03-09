@@ -53,9 +53,9 @@ function Chitietdetai(props) {
         data1.push(obj)
         data1.push(obj2)
          const temp = await detaiAPI.chondetai(data1)
-         console.log(temp)
+        //  console.log(temp)
         setOpen(false);
-        if(temp.data.a == "thatbai"){
+        if(temp.data.a === "thatbai"){
             window.alert("Them that bai")
         }
     }

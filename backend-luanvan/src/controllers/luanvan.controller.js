@@ -2,38 +2,49 @@ const mongoose = require("mongoose");
 const Luanvan = require("../models/luanvan.model");
 const luanvanController = {
     
-    themLuanvan: async (req, res) => {
-        try {
-            const newLuanvan = new Luanvan({
-                tenluanvantiengviet: req.body.tenluanvan,
-                tenluanvantienganh: req.body.giangvien,
-                giangvien: req.body.hocky,
-                sinhvien: req.body.mota_kienthuc,
-                hocky: req.body.hocky,
-            });
-            const luanvan = await newLuanvan.save();
-            // console.log(luanvan);
-            await Hocky.findByIdAndUpdate(
-                { _id: req.body.hocky },
-                {
-                    $push: {
-                        danhsachluanvan_dexuat: luanvan._id
-                    }
-                });
-            await giangvienModel.findByIdAndUpdate(
-                { _id: req.body.giangvien },
-                {
-                    $push: {
-                        danhsachluanvan_dexuat: luanvan._id
-                    }
-                });
-            res.status(200).json(luanvan);
+    layLuanvan: async (req, res) => {
+        const luanvan = await Luanvan.find().populate({ path: 'hocky' })
+        if (!luanvan) {
+            return res.status(403).json("Rỗng")
         }
-
-        catch (err) {
-            res.status(500).json(err);
-        }
+        return res.status(200).json(luanvan)
     },
+    capnhatluanvan: async(req, res) => {
+        try{
+            if(req.body.check === false){
+                const luanvan = await Luanvan.findByIdAndUpdate(req.body.id,
+                    {
+                        tenluanvantiengviet: req.body.tenluanvantiengviet,
+                        tenluanvantienganh: req.body.tenluanvantienganh,
+                        sinhvien: ''                        
+                    });
+            }else{
+                const luanvan = await Luanvan.findByIdAndUpdate(req.body.id,
+                    {
+                        tenluanvantiengviet: req.body.tenluanvantiengviet,
+                        tenluanvantienganh: req.body.tenluanvantienganh,                     
+                    });
+            }
+
+            return res.status(200).json('Cập nhật thành công');
+        }catch(err){
+            res.status(500).json(err);
+        }},
+        capnhathoidong: async(req, res) => {
+            // console.log( req.body.hoidong);
+            try{
+                const luanvan = await Luanvan.findByIdAndUpdate(req.body.detai,
+                    {
+                        hoidong: req.body.hoidong,
+                        thoigianbaove: req.body.thoigianbaove,
+                                             
+                    });
+                
+                // console.log(detai)
+                return res.status(200).json('Cập nhật thành công');
+            }catch(err){
+                res.status(500).json(err);
+            }},
 }
 
 module.exports = luanvanController;

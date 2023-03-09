@@ -18,6 +18,10 @@ const luanvan = mongoose.Schema(
             type: String,
             default: ''
         },
+        mssv:{
+            type: String,
+            default: ''
+        },
         hocky: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Hocky'

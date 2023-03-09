@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
-import { detaiAPI, nguoidungAPI } from "../../../api";
+import { detaiAPI, luanvanAPI, nguoidungAPI } from "../../../api";
 
 CapnhathoidongForm.propTypes = {};
 
@@ -48,7 +48,7 @@ function CapnhathoidongForm(props) {
     let updatedata = { ...data, hoidong, thoigianbaove };
 
     console.log(updatedata);
-    const temp = detaiAPI.capnhathoidong(updatedata);
+    const temp = luanvanAPI.capnhathoidong(updatedata);
     console.log(temp);
     enqueueSnackbar("Cập nhật thành công", { variant: "success" });
     close();
@@ -69,10 +69,10 @@ function CapnhathoidongForm(props) {
                 {...register("detai")}
               >
                 {danhsach.map((item) => {
-                  item.tendetai = item.tendetai.replace(/<\/?[^>]+(>|$)/g, "");
+                  item.tenluanvantiengviet = item.tenluanvantiengviet.replace(/<\/?[^>]+(>|$)/g, "");
                   return (
                     <option key={item._id} value={item._id}>
-                      {item.tendetai}
+                      {item.tenluanvantiengviet}
                     </option>
                   );
                 })}

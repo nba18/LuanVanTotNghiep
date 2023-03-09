@@ -30,6 +30,21 @@ export const hockyAPI = {
 
 }
 
+export const luanvanAPI = {
+
+    laydsluanvan: () => {
+        return callApi('get', `/giangvien/laydsluanvan`,null);
+    },
+    capnhatluanvan: (data) => {
+        return callApi('put', `/giangvien/capnhatluanvan`, data);
+    },
+    capnhathoidong: (data) => {
+        return callApi('put', `/truongkhoa/capnhathoidong`, data);
+    },
+
+
+
+}
 export const detaiAPI = {
     themdetai: (data) => {
         return callApi('post', `/giangvien/themdetai`, data);
@@ -58,12 +73,12 @@ export const detaiAPI = {
     yeucauchinhsua: (id) => {
         return callApi('put', `/truongkhoa/yeucauchinhsua`,id)
     },
-    capnhatdetai: (data) => {
-        return callApi('put', `/giangvien/capnhatdetai`, data);
-    },
-    capnhathoidong: (data) => {
-        return callApi('put', `/truongkhoa/capnhathoidong`, data);
-    },
+    // capnhatdetai: (data) => {
+    //     return callApi('put', `/giangvien/capnhatdetai`, data);
+    // },
+    // capnhathoidong: (data) => {
+    //     return callApi('put', `/truongkhoa/capnhathoidong`, data);
+    // },
     chondetai: (data) => {
         return callApi('put',`/chondetai`,data);
     },
